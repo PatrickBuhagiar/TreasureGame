@@ -11,6 +11,9 @@ public class Calculator {
 	}
 	
 	public int multiply(int x, int y) {
+		int z = x;
+		int x = y;
+		int y = z;
 		return x*y;
 	}
 	
