@@ -28,13 +28,18 @@ public class Map implements iMap {
         int randomY = randomGenerator.nextInt(map[0].length);
         map[randomX][randomY] = tileType.TREASURE;
         
-        for(int i = 0; i<= map.length; i++){
-            for(int j = 0; j<= map[0].length; j++){
-                
+        for(int i = 0; i<= map.length - 1; i++){
+            for(int j = 0; j<= map[0].length - 1; j++){
+                map[i][j] = tileType.UNKNOWN;
             }
         }
+        recursiveDivisor();
     }
     public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;
+    }
+    /* Recursive Divisor Algorithm for Maze Generation */
+    public void recursiveDivisor(){
+        
     }
 }
