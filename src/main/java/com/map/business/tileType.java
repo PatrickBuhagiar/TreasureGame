@@ -10,8 +10,6 @@ package com.map.business;
  *
  * @author Jake
  */
-public interface iMap {
-    public boolean setMapSize(int x, int y);
-    public void generate();
-    public tileType getTyleType(int x, int y);
+public enum tileType {
+    UNKNOWN,SEA,GRASS,TREASURE
 }
