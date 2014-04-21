@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Game {
     private static int turns;
     private static int players;
-    private static int size;
+    private  int size;
     private static Map map;
     
     private static Game singleton = new Game();
@@ -22,6 +22,10 @@ public class Game {
         turns = 0;
         players = 0;
         size = 0;
+    }
+    
+    public Map getMap(){
+        return map;
     }
     
     //get singleton instance
@@ -45,7 +49,7 @@ public class Game {
     }
     
     //setter for Map size
-    private static void setSize(int x){
+    private  void setSize(int x){
         size = x;
     }
     
@@ -55,7 +59,7 @@ public class Game {
     }
     
     //getter for Map size
-    private static int getSize(){
+    public  int getSize(){
         return size;
     }
     
@@ -64,7 +68,7 @@ public class Game {
  * including input verification of number of players
  * and map size.
  */
-    protected static void GameMethod() {
+    protected void GameMethod() {
         System.out.println("Welcome! How many players are you?\n");
         
         //For Looping purposes 

@@ -18,20 +18,20 @@ public class Player {
    private Position xy;
    private int id;
    private Map currentMap;
-   private Game game;
+   private Game currentGame;
 
     public Player() {
     }
    
    public Player(int ID, Map map, Game game){
        id = ID;
-       currentMap = map;
+       currentGame=game;
    }
    
    private void GenerateStart(){
        Random randomGenerator = new Random();
-       int X = randomGenerator.nextInt();
-       int Y = randomGenerator.nextInt();
+       int X = randomGenerator.nextInt(currentGame.getSize());
+       int Y = randomGenerator.nextInt(currentGame.getSize());
        
    }
 }
