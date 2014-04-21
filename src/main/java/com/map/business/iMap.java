@@ -13,5 +13,5 @@ package com.map.business;
 public interface iMap {
     public boolean setMapSize(int x, int y);
     public void generate();
-    public tileType getTyleType(int x, int y);
+    public tileType getTileType(int x, int y);
 }

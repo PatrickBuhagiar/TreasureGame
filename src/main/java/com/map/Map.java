@@ -23,7 +23,7 @@ public class Map implements iMap {
     public void generate(){
         
     }
-    public tileType getTyleType(int x, int y){
+    public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;
     }
 }
