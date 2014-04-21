@@ -44,8 +44,7 @@ public class Map implements iMap {
         int randomGrass = randomGenerator.nextInt(map[0].length);
         for(int i = 0; i<= map.length - 1; i++){
             if(i != randomGrass){
-              map[i][randomWater] = tileType.SEA;  
-              // test
+              map[i][randomWater] = tileType.SEA;   
             }
         }
     }
