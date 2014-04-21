@@ -41,5 +41,6 @@ public class Map implements iMap {
     /* Recursive Divisor Algorithm for Maze Generation */
     public void recursiveDivisor(){
         /* Test */
+        /* Test */
     }
 }
