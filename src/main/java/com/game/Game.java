@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.game;
+import com.map.Map;
 import java.util.Scanner;
 /**
  *
@@ -13,6 +14,7 @@ public class Game {
     private static int turns;
     private static int players;
     private static int size;
+    private static Map map;
     
     private static Game singleton = new Game();
      //Private constructor so as to prevent any other class from instantiating
