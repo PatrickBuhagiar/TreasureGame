@@ -15,7 +15,7 @@ public class Game {
     private static int size;
     
     private static Game singleton = new Game();
-     //Private constructor so as to prevent any other class from instantiating
+     //Private constructor so as to prevent any other class from instantiating...
     private Game(){
         turns = 0;
         players = 0;
