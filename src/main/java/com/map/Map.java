@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class Map implements iMap {
     private tileType map [][];
+    private Random randomGenerator = new Random();
     public Map(){
         map = new tileType [5][5];
     }
@@ -23,24 +24,28 @@ public class Map implements iMap {
         return true;
     }
     public void generate(){
-        Random randomGenerator = new Random();
         int randomX = randomGenerator.nextInt(map.length);
         int randomY = randomGenerator.nextInt(map[0].length);
         map[randomX][randomY] = tileType.TREASURE;
-        
+        // First create map without water.
         for(int i = 0; i<= map.length - 1; i++){
             for(int j = 0; j<= map[0].length - 1; j++){
-                map[i][j] = tileType.UNKNOWN;
+                map[i][j] = tileType.GRASS;
             }
         }
-        recursiveDivisor();
+        int randomWater = randomGenerator.nextInt(map.length);
+        recursiveDivisor(randomWater);
     }
     public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;
     }
     /* Recursive Divisor Algorithm for Maze Generation */
-    public void recursiveDivisor(){
-        /* Test */
-        /* Test */
+    public void recursiveDivisor(int randomWater){
+        int randomGrass = randomGenerator.nextInt(map[0].length);
+        for(int i = 0; i<= map.length - 1; i++){
+            if(i != randomGrass){
+              map[i][randomWater] = tileType.SEA;   
+            }
+        }
     }
 }
