@@ -7,21 +7,32 @@
 package com.map;
 import com.map.business.iMap;
 import com.map.business.tileType;
+import java.util.Random;
+
 /**
  *
  * @author Jake
  */
 public class Map implements iMap {
-    private int map [][];
+    private tileType map [][];
     public Map(){
-        map = new int [5][5];
+        map = new tileType [5][5];
     }
     public boolean setMapSize(int x, int y){
-        this.map = new int [x][y];
+        this.map = new tileType [x][y];
         return true;
     }
     public void generate(){
+        Random randomGenerator = new Random();
+        int randomX = randomGenerator.nextInt(map.length);
+        int randomY = randomGenerator.nextInt(map[0].length);
+        map[randomX][randomY] = tileType.TREASURE;
         
+        for(int i = 0; i<= map.length; i++){
+            for(int j = 0; j<= map[0].length; j++){
+                
+            }
+        }
     }
     public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;

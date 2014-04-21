@@ -5,7 +5,6 @@
  */
 
 package com.map.business;
-
 /**
  *
  * @author Jake
