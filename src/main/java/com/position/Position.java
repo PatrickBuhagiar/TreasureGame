@@ -11,5 +11,19 @@ package com.position;
  * @author Patrick
  */
 public class Position {
+    private static int x = 0;
+    private static int y = 0;
     
+    public static void setPosition(int X, int Y){
+        x=X;
+        y=Y;
+    }
+    
+    public static int getX(){
+        return x;
+    }
+    
+    public static int getY(){
+        return y;
+    }
 }
