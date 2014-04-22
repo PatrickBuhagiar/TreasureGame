@@ -14,7 +14,7 @@ public class Position {
     private static int x = 0;
     private static int y = 0;
     
-    public static void setPosition(int X, int Y){
+    public void setPosition(int X, int Y){
         x=X;
         y=Y;
     }
