@@ -6,6 +6,7 @@
 
 package com.position;
 
+import com.game.Game;
 /**
  *
  * @author Patrick
@@ -13,17 +14,26 @@ package com.position;
 public class Position {
     private static int x = 0;
     private static int y = 0;
+
     
     public void setPosition(int X, int Y){
         x=X;
         y=Y;
     }
     
-    public static int getX(){
+    public int getX(){
         return x;
     }
     
-    public static int getY(){
+    public int getY(){
         return y;
     }
+    
+    public boolean OutOfBounds(int x, int y, Game currentGame){
+        if (y<0||y>currentGame.getSize()||x<0||x>currentGame.getSize()){
+            return true;
+        } else return false;
+    }
 }
+
+
