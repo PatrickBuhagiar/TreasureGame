@@ -9,6 +9,8 @@ import com.position.Position;
 import java.util.Random;
 import com.game.Game;
 import com.map.business.tileType;
+import java.io.IOException;
+
 /**
  *
  * @author Patrick
@@ -39,5 +41,37 @@ public class Player {
         Position currentPosition = new Position();
         currentPosition.setPosition(X, Y);
         return currentPosition;
+    }
+    
+    public void Move() throws IOException{
+        char step;
+        boolean loop=true;
+        int x = currentPosition.getX();
+        int y = currentPosition.getY();
+        
+        while (loop){
+            step = (char) System.in.read();
+            if (step == 'w'){
+                if(!currentPosition.OutOfBounds(x,y-1, currentGame)){
+                    currentPosition.setPosition(x,y-1);
+                    loop = false;
+                }
+            } else if (step == 'a'){
+                if(!currentPosition.OutOfBounds(x-1,y, currentGame)){
+                    currentPosition.setPosition(x-1,y);
+                    loop = false;
+                }
+            } else if (step == 's'){
+                if(!currentPosition.OutOfBounds(x,y+1, currentGame)){
+                    currentPosition.setPosition(x,y+1);
+                    loop = false;
+                }
+            } else if (step == 'd'){
+                if(!currentPosition.OutOfBounds(x+1,y, currentGame)){
+                    currentPosition.setPosition(x+1,y);
+                    loop = false;
+                }
+            }
+        }
     }
 }
