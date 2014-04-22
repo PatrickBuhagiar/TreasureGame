@@ -55,7 +55,7 @@ public class Game {
     }
     
     //getter for Map size
-    private  int getSize(){
+    public  int getSize(){
         return size;
     }
     
