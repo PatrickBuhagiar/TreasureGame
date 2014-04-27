@@ -35,6 +35,11 @@ public class Map implements iMap {
         }
         recursiveDivisor(map.length, map[0].length);
     }
+    public String outputMap(){
+        String output = "";
+        output += "<html>";
+        return "";
+    }
     
     public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;
