@@ -5,7 +5,7 @@
  */
 
 package com.map;
-import com.map.htmlGenerator.htmlPage;
+import com.map.business.htmlPage;
 /**
  *
  * @author Jake
