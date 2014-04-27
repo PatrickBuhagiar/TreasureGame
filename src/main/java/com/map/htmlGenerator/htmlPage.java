@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.map.business;
+package com.map.htmlGenerator;
 import com.map.htmlGenerator.Html;
 import com.map.htmlGenerator.Body;
 import com.map.htmlGenerator.business.Tag;
