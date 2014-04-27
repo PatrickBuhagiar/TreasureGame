@@ -33,6 +33,9 @@ public abstract class  Tag {
     public void setCSSStyle(String css){
         this.cssStyle = css;
     }
+    public String getCSSStyle(){
+        return cssStyle;
+    }
     
     public String getCode(){
         String output = "";
