@@ -36,7 +36,18 @@ public abstract class  Tag {
     public String getCSSStyle(){
         return cssStyle;
     }
-    
+    public void placeTag(Tag t){
+        innerTag = new ArrayList<Tag>();
+        innerTag.add(t);
+    }
+    public void removeTag(Tag t){
+        if(innerTag != null){
+            innerTag.remove(t);
+        }
+        if(innerTag.isEmpty()){
+            innerTag = null;
+        }
+    }
     public String getCode(){
         String output = "";
         String openTag = getOpenTag();
