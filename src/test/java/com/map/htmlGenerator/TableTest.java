@@ -6,6 +6,7 @@
 
 package com.map.htmlGenerator;
 
+import com.map.htmlGenerator.business.Tag;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,10 +39,59 @@ public class TableTest {
     public void tearDown() {
     }
 
+     /**
+     * Test of setTagName method, of class Tag.
+     */
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetTagName() {
+        System.out.println("setTagName");
+        String name = "html";
+        Tag instance = new Table();
+        instance.setTagName(name);
+        String expResult = name;
+        String result = instance.getTagName();
+        assertEquals(expResult,result);
+    }
+
+    /**
+     * Test of getTagName method, of class Tag.
+     */
+    @Test
+    public void testGetTagName() {
+        System.out.println("getTagName");
+        String name = "html";
+        Tag instance = new Table();
+        instance.setTagName(name);
+        String expResult = name;
+        String result = instance.getTagName();
+        assertEquals(expResult,result);
+    }
+
+    /**
+     * Test of setCSSStyle method, of class Tag.
+     */
+    @Test
+    public void testSetCSSStyle() {
+        System.out.println("setCSSStyle");
+        String css = "style=\"width=200px;\"";
+        Tag instance = new Table();
+        instance.setCSSStyle(css);
+        String expResult = css;
+        String result = instance.getCSSStyle();
+        assertEquals(expResult,result);
+    }
+
+    /**
+     * Test of getCode method, of class Tag.
+     */
+    @Test
+    public void testGetCode() {
+        System.out.println("getCode");
+        Tag instance = new Table();
+        instance.setTagName("html");
+        String expResult = "<html></html>";
+        String result = instance.getCode();
+        assertEquals(expResult, result);
     }
     
 }
