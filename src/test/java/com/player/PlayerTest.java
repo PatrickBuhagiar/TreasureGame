@@ -80,20 +80,6 @@ public class PlayerTest {
     }
 
     /**
-     * Test of uncoverTile method, of class Player.
-     */
-    @Test
-    public void testUncoverTile() throws Exception {
-        System.out.println("uncoverTile");
-        int x = 0;
-        int y = 0;
-        Player instance = null;
-        instance.uncoverTile(x, y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of checkStatus method, of class Player.
      */
     @Test
