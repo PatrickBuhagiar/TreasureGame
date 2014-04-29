@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.map.Map;
 import com.player.Player;
+import java.io.IOException;
 /**
  *
  * @author Patrick
@@ -90,7 +91,7 @@ public class Game {
  * including input verification of number of players
  * and map size.
  */
-    protected void GameMethod() {
+    protected void GameMethod() throws IOException {
         playerInput();
         this.setMap(new Map()); // create Map Instace
         currentMap.setMapSize(size, size); // Set the Map Size
@@ -100,7 +101,17 @@ public class Game {
         for(int i = 0; i<= players; i++){
             playerList.add(new Player(i,this));
         }
-        //checking if correct inputs
+        int currentPlayer = 0;
+        boolean won = false;
+        do{
+            playerList.get(currentPlayer).Move();
+            if(playerList.get(currentPlayer) == playerList.get(playerList.size() - 1)){
+                currentPlayer = 0;
+            } else {
+                currentPlayer++;
+            }
+        }while(won == false);
+        
         System.out.println("Number of players: " + getPlayers());
         System.out.println("Mapsize is: " + getSize() +"x"+getSize());
     }
