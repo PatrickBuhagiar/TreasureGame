@@ -8,6 +8,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.map.Map;
 import com.player.Player;
+import java.io.IOException;
+
 import java.io.FileNotFoundException;
 /**
  *
