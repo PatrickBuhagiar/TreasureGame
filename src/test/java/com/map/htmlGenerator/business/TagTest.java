@@ -92,6 +92,18 @@ public class TagTest {
         String result = instance.getCloseTag();
         assertEquals(expResult,result);
     }
+    /**
+     * Test of getOpenTag method, of class Tag.
+     */
+    @Test
+    public void testgetOpenTag() {
+        Tag instance = new TagImpl();
+        String name = "html";
+        instance.setTagName(name);
+        String expResult = "<" + "name" + ">";
+        String result = instance.getOpenTag();
+        assertEquals(expResult,result);
+    }
 
     public class TagImpl extends Tag {
     }
