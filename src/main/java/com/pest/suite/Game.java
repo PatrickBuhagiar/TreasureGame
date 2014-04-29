@@ -16,17 +16,15 @@ import java.io.FileNotFoundException;
  * @author Patrick
  */
 public class Game {
-    private static int turns;
     private static int players;
     private int size;
     private Map currentMap;
-    private static ArrayList<Player> playerList = new ArrayList();
+    private static final ArrayList<Player> playerList = new ArrayList();
     
-    private static Game singleton = new Game();
+    private static final Game singleton = new Game();
     
      //Private constructor so as to prevent any other class from instantiating
     private Game(){
-        turns = 0;
         players = 0;
         size = 0;
     }
