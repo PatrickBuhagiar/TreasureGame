@@ -14,9 +14,8 @@ import java.util.ArrayList;
 public abstract class  Tag {
     protected String tagName;
     protected String cssStyle = null;
-    protected ArrayList<Tag> innerTag = null;
+    public ArrayList<Tag> innerTag = null;
     public Tag(){
-        
     }
     public Tag(String n){
         this.tagName = n;
@@ -37,25 +36,21 @@ public abstract class  Tag {
         return cssStyle;
     }
     
-    public String getCode(){
+    public String getCode(String contents){
         String output = "";
         String openTag = getOpenTag();
         output += openTag;
-        if(innerTag != null){
-            for(Tag item : innerTag){
-                output += item.getCode();
-            }
-        }
+        output += contents;
         String closeTag = getCloseTag();
         output += closeTag;
         return output;
     }
     
-    private String getCloseTag(){
+    public String getCloseTag(){
         return "</" + tagName + ">";
     }
     
-    private String getOpenTag(){
+    public String getOpenTag(){
         String output = "";
         output += "<" + tagName;
         if(cssStyle != null){

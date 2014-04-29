@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.map.Map;
 import com.player.Player;
 import java.io.IOException;
+import com.io.PlayerSave;
 /**
  *
  * @author Patrick
@@ -73,7 +74,7 @@ public class Game {
                 do{
                     System.out.println("Please enter a map size between 5 and 50:");
                     varSize = sc.nextInt();
-                }while(varSize > 4 && varSize <=  50);
+                }while(varSize < 4 || varSize >  50);
             } else if((varPlayers > 4) && (varPlayers <= 8)){
                 do{
                     System.out.println("Please enter a map size between 8 and 50:");
@@ -83,7 +84,12 @@ public class Game {
                 varSize = 50;
             }
         }while(varPlayers < 2 || varPlayers > 8);
-        
+       /* PlayerSave p = new PlayerSave("C://");
+        try{
+            p.saveFile();
+        } catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }*/
         
         setPlayers(varPlayers);
         setSize(varSize);

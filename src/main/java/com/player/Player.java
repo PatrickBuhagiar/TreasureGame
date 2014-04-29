@@ -11,6 +11,8 @@ import com.pest.suite.Game;
 import com.map.business.tileType;
 import java.io.IOException;
 import com.map.Map;
+import com.map.TableMapRender;
+
 /**
  *
  * @author Patrick
@@ -21,6 +23,7 @@ public class Player {
     private Map displayMap;
     private Game currentGame;
     private Position startPosition;
+    private TableMapRender tmr;
     
     public Player(int ID, Game game){
         id = ID;
@@ -59,7 +62,7 @@ public class Player {
                     if(!currentPosition.OutOfBounds(x,y-1, currentGame)){
                         currentPosition.setPosition(x,y-1);
                         r = true;
-                        uncoverTile(x,y-1);
+                        uncoverTile(currentPosition.getX(),currentPosition.getY());
                     } else {
                      System.out.println("Out of Bounds Please Re-Enter");
                         r = false;
@@ -107,6 +110,7 @@ public class Player {
         if(!currentPosition.OutOfBounds(x,y, currentGame)){
             displayMap.setTileType(x, y, currentGame.getMap().getTileType(x, y));
         }
+        getRender();
     }
     
     public char checkStatus(){
@@ -127,6 +131,17 @@ public class Player {
                 result = 'C';
         }
         return result;
+    }
+    
+    public void getRender(){
+        tmr = new TableMapRender(displayMap.getMap(),"","");
+        String code = tmr.generateCode();
+        for(int i = 0; i<= displayMap.getMap().length - 1; i++){
+            for(int j = 0; j<= displayMap.getMap()[0].length - 1; j++){
+                // System.out.println(displayMap.getMap()[i][j].name());
+            }
+        }
+        System.out.println(code);
     }
 }
 
