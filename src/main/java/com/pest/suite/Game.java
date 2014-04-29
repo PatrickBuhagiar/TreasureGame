@@ -114,12 +114,16 @@ public class Game {
         currentMap.generate(); // Generates the Map 
         
         ArrayList<Player> playerList = new ArrayList();
-        for(int i = 0; i<= players-1; i++){
-            playerList.add(new Player(i,this));
+        for(int i = 0; i< players; i++){
+            Player newPlayer = new Player(i,this);
+            playerList.add(newPlayer);
         }
+        //Determine who's next to play
         int currentPlayer = 0;
         boolean won = false;
+        
         do{
+            
             System.out.println("Player " + playerList.get(currentPlayer).getID() +"'s turn ");
             System.out.println("Enter the Key to Move");
             char c;
