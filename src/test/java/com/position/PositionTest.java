@@ -91,13 +91,33 @@ public class PositionTest {
         System.out.println("OutOfBounds");
         int x = 0;
         int y = 0;
-        //Game 
-        //Position instance = new Position();
+        Game g = Game.getInstance();
+        g.setSize(5);
+        Position instance = new Position();
+        //Test X out, Y in; result false.
         boolean expResult = false;
-        //boolean result = instance.OutOfBounds(x, y, currentGame);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        x = 5;
+        y = 3;
+        boolean result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X in, Y out; result false.
+        expResult = false;
+        x = 3;
+        y = 5;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X out, Y out; result false.
+        expResult = false;
+        x = 5;
+        y = 5;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X in, Y in; result false.
+        expResult = true;
+        x = 3;
+        y = 5;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
     }
     
 }
