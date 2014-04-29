@@ -14,4 +14,5 @@ public interface iMap {
     public boolean setMapSize(int x, int y);
     public void generate();
     public tileType getTileType(int x, int y);
+    public void setTileType(int x, int y, tileType t);
 }

@@ -15,67 +15,51 @@ import java.util.Random;
  */
 public class Map implements iMap {
     private tileType map [][];
-    private Random randomGenerator = new Random();
+    private final Random randomGenerator = new Random();
     public Map(){
         map = new tileType [5][5];
     }
+    @Override
     public boolean setMapSize(int x, int y){
         this.map = new tileType [x][y];
         return true;
     }
+    
+    @Override
     public void generate(){
-        int randomX = randomGenerator.nextInt(map.length);
-        int randomY = randomGenerator.nextInt(map[0].length);
-        map[randomX][randomY] = tileType.TREASURE;
-        // First create map without water.
+        setWinningTile(1);
         for(int i = 0; i<= map.length - 1; i++){
-            for(int j = 0; j<= map[0].length - 1; j++){
-                map[i][j] = tileType.GRASS;
+            for (int j = 0; j<= map[0].length - 1; j++){
+                boolean b = randomGenerator.nextBoolean();
+                if(b == true){  map[i][j] = tileType.GRASS; } else{   map[i][j] = tileType.GRASS; }
             }
         }
-        recursiveDivisor(map.length, map[0].length);
-    }
-    public String outputMap(){
-        String output = "";
-        output += "<html>";
-        return "";
     }
     
+    private boolean setWinningTile(int n){
+        int x,y;
+        if(n > 0){
+            x = randomGenerator.nextInt(map.length);
+            y = randomGenerator.nextInt(map[0].length);
+            do{
+               for(int i = 0; i<= map.length - 1; i++){
+                   for(int j = 0; j<= map[0].length - 1; j++){
+                       map[x][y] = tileType.TREASURE;
+                   }
+               } 
+            }while(n > 0);
+            return true;
+        }
+        return false;
+    }
+    
+    @Override
     public tileType getTileType(int x, int y){
         return tileType.UNKNOWN;
     }
     
-    /* Recursive Divisor Algorithm for Maze Generation */
-    public void recursiveDivisor(int width, int height){
-        boolean direction = randomGenerator.nextBoolean();
-        int randomWater = randomGenerator.nextInt(height);
-        int randomGrass = randomGenerator.nextInt(width);
-        if(direction == false){
-            splitMapVertical(randomWater, randomGrass);
-        } else {
-            splitMapHorizontal(randomWater,randomGrass);
-        }
-    }
-    public void splitMapVertical(int randomWater, int randomGrass){
-        for(int i = 0; i<= map.length -1; i++){
-            // Create a random hole in the wall
-            if(i == randomGrass){
-                map[i][randomWater] = tileType.GRASS;
-            } else {
-                map[i][randomWater] = tileType.SEA;
-            }
-        }
-        recursiveDivisor(map.length-randomWater,map[0].length);
-    }
-    public void splitMapHorizontal(int randomWater, int randomGrass){
-        for(int i = 0; i<= map.length -1; i++){
-            // Create a random hole in the wall
-            if(i == randomGrass){
-                map[randomWater][i] = tileType.GRASS;
-            } else {
-                map[randomWater][i] = tileType.SEA;
-            }
-        }
-        recursiveDivisor(map.length, map.length-randomWater);
+    @Override
+    public void setTileType(int x, int y, tileType t){
+        map[x][y] = t;
     }
 }
