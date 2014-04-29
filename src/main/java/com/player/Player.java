@@ -10,13 +10,9 @@ import com.map.TableMapRender;
 import com.map.business.tileType;
 import com.pest.suite.Game;
 import com.position.Position;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.lang.Object;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,11 +22,11 @@ import java.util.logging.Logger;
  * @author Patrick
  */
 public class Player {
-    private int id;
+    private final int id;
     private Position currentPosition;
-    private Map displayMap;
-    private Game currentGame;
-    private Position startPosition;
+    private final Map displayMap;
+    private final Game currentGame;
+    private final Position startPosition;
     private TableMapRender tmr;
     
     public Player(int ID, Game game) throws FileNotFoundException{
@@ -43,7 +39,7 @@ public class Player {
         displayMap = new Map();
         displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
         displayMap.setUnknown();
-        uncoverTile(currentPosition.getX(),currentPosition.getY());
+        uncoverTile(startPosition.getX(),startPosition.getY());
     }
     
     public void ResetPosition(){
@@ -59,9 +55,9 @@ public class Player {
             X = randomGenerator.nextInt(currentGame.getSize() - 1);
             Y = randomGenerator.nextInt(currentGame.getSize() - 1);
         }while(currentGame.getMap().getTileType(X, Y) != tileType.GRASS);
-        Position currentPosition = new Position();
-        currentPosition.setPosition(X, Y);
-        return currentPosition;
+        Position P = new Position();
+        P.setPosition(X, Y);
+        return P;
     }
     public boolean movePlayer(char c) throws FileNotFoundException{
         int x = currentPosition.getX();
@@ -121,7 +117,7 @@ public class Player {
         return id;
     }
     
-    public void uncoverTile(int x, int y) throws FileNotFoundException{
+    private void uncoverTile(int x, int y) throws FileNotFoundException{
         if(!currentPosition.OutOfBounds(x,y, currentGame)){
             displayMap.setTileType(x, y, currentGame.getMap().getTileType(x, y));
         }
