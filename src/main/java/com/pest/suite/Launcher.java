@@ -1,5 +1,6 @@
 package com.pest.suite;
-
+import com.map.Map;
+import com.map.TableMapRender;
 /**
  * This class constitutes the main entry point for PESTSuite.
  * @author mark
@@ -12,8 +13,11 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		System.out.println("PESTSuite v");
+            Map m = new Map();
+            m.setMapSize(5, 5);
+            m.generate();
+            TableMapRender tmr = new TableMapRender(m.getMap(),"","");
+            System.out.println(tmr.generateCode());
 	}
 	
 }
