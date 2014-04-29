@@ -91,11 +91,15 @@ public class Game {
  * and map size.
  */
     protected void GameMethod() {
-        System.out.println("Welcome! How many players are you?\n");
         playerInput();
         Map m = new Map(); // Create a Map Instance
         m.setMapSize(size, size); // Set the Map Size
         m.generate(); // Generates the Map 
+        for(int i = 0; i<= m.getMap().length - 1; i++){
+            for(int j = 0; j<= m.getMap()[0].length - 1; j++){
+                System.out.print(m.getMap()[i][j]);
+            }
+        }
         ArrayList<Player> playerList = new ArrayList();
         for(int i = 0; i<= players; i++){
             playerList.add(new Player(i,this));

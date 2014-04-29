@@ -31,13 +31,13 @@ public class Map implements iMap {
     
     @Override
     public void generate(){
-        setWinningTile(1);
         for(int i = 0; i<= map.length - 1; i++){
             for (int j = 0; j<= map[0].length - 1; j++){
-                boolean b = randomGenerator.nextBoolean();
-                if(b == true){  map[i][j] = tileType.GRASS; } else{   map[i][j] = tileType.GRASS; }
+                int b = randomGenerator.nextInt(100);
+                if(b%2 == 0){  map[i][j] = tileType.GRASS; } else{   map[i][j] = tileType.SEA; }
             }
         }
+        setWinningTile(1);
     }
     
     private boolean setWinningTile(int n){
@@ -60,7 +60,7 @@ public class Map implements iMap {
     
     @Override
     public tileType getTileType(int x, int y){
-        return tileType.UNKNOWN;
+        return map[x][y];
     }
     
     @Override
