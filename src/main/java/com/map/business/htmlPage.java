@@ -26,4 +26,10 @@ public abstract class htmlPage {
     public void setBodyStyle(String style){
         this.bodyTag.setCSSStyle(style);
     }
+    public String getHtmlStyle(){
+        return htmlTag.getCSSStyle();
+    }
+    public String getBodyStyle(){
+        return bodyTag.getCSSStyle();
+    }
 }
