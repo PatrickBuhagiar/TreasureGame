@@ -39,6 +39,13 @@ public class Map implements iMap {
         }
         setWinningTile(1);
     }
+    public void setUnknown(){
+        for(int i = 0; i<= map.length - 1; i++){
+            for(int j = 0; j<= map[0].length - 1; j++){
+                map[i][j] = tileType.UNKNOWN;
+            }
+        }
+    }
     
     private boolean setWinningTile(int n){
         int x,y;

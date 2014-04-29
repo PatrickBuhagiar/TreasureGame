@@ -10,7 +10,7 @@ import java.util.Random;
 import com.pest.suite.Game;
 import com.map.business.tileType;
 import java.io.IOException;
-
+import com.map.Map;
 /**
  *
  * @author Patrick
@@ -18,12 +18,18 @@ import java.io.IOException;
 public class Player {
     private int id;
     private Position currentPosition;
+    private Map displayMap;
     private Game currentGame;
+    private Position startPosition;
     
     public Player(int ID, Game game){
         id = ID;
         currentGame = game;
-        currentPosition = generateStart();
+        startPosition = generateStart();
+        currentPosition = startPosition;
+        displayMap = new Map();
+        displayMap.setUnknown();
+        uncoverTile(currentPosition.getX(),currentPosition.getY());
     }
     
     private Position generateStart(){
@@ -39,36 +45,79 @@ public class Player {
         currentPosition.setPosition(X, Y);
         return currentPosition;
     }
-    
-    public void Move() throws IOException{
-        char step;
-        boolean loop=true;
+    public boolean movePlayer(char c){
         int x = currentPosition.getX();
         int y = currentPosition.getY();
-        
-        while (loop){
-            step = (char) System.in.read();
-            if (step == 'w'){
-                if(!currentPosition.OutOfBounds(x,y-1, currentGame)){
-                    currentPosition.setPosition(x,y-1);
-                    loop = false;
-                }
-            } else if (step == 'a'){
-                if(!currentPosition.OutOfBounds(x-1,y, currentGame)){
-                    currentPosition.setPosition(x-1,y);
-                    loop = false;
-                }
-            } else if (step == 's'){
-                if(!currentPosition.OutOfBounds(x,y+1, currentGame)){
-                    currentPosition.setPosition(x,y+1);
-                    loop = false;
-                }
-            } else if (step == 'd'){
-                if(!currentPosition.OutOfBounds(x+1,y, currentGame)){
-                    currentPosition.setPosition(x+1,y);
-                    loop = false;
-                }
+        boolean r = false;
+            switch(c){
+                case 'w':
+                    if(!currentPosition.OutOfBounds(x,y-1, currentGame)){
+                        currentPosition.setPosition(x,y-1);
+                        r = true;
+                        uncoverTile(x,y-1);
+                    } else {
+                     System.out.println("Out of Bounds Please Re-Enter");
+                        r = false;
+                    }
+                    break;
+                case 'a':
+                    if(!currentPosition.OutOfBounds(x-1,y, currentGame)){
+                        currentPosition.setPosition(x-1,y);
+                        uncoverTile(x-1,y);
+                        r = true;
+                    } else {
+                        System.out.println("Out of Bounds Please Re-Enter");
+                        r = false;
+                    }
+                    break;
+                case 's':
+                    if(!currentPosition.OutOfBounds(x,y+1, currentGame)){
+                        currentPosition.setPosition(x,y+1);
+                        uncoverTile(x,y+1);
+                        r = true;
+                    } else {
+                        System.out.println("Out of Bounds Please Re-Enter");
+                        r = false;
+                    }
+                    break;
+                case 'd':
+                    if(!currentPosition.OutOfBounds(x+1,y, currentGame)){
+                        currentPosition.setPosition(x+1,y);
+                        uncoverTile(x+1,y);
+                        r = true;
+                    } else {
+                        System.out.println("Out of Bounds Please Re-Enter");
+                        r = false;
+                    }
+                    break;
             }
+            return r;
+    }
+    
+    public void uncoverTile(int x, int y){
+        if(!currentPosition.OutOfBounds(x,y, currentGame)){
+            displayMap.setTileType(x, y, currentGame.getMap().getTileType(x, y));
         }
     }
+    
+    public char checkStatus(){
+        tileType currentTileValue = 
+        currentGame.getMap().getTileType(currentPosition.getX(), currentPosition.getY());
+        char result;
+        switch(currentTileValue){
+            case SEA:
+                result = 'L';
+                break;
+            case TREASURE:
+                result = 'W';
+                break;
+            case GRASS:
+                result = 'C';
+                break;
+            default:
+                result = 'C';
+        }
+        return result;
+    }
 }
+

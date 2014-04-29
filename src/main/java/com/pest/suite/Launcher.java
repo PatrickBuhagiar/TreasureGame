@@ -13,10 +13,6 @@ import java.io.IOException;
 public class Launcher {
     public static void main(String[]args){
         Game g = Game.getInstance();
-        try{
             g.GameMethod();
-        } catch(IOException e){
-            
-        }
     }
 }

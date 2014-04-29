@@ -91,7 +91,8 @@ public class Game {
  * including input verification of number of players
  * and map size.
  */
-    protected void GameMethod() throws IOException {
+    
+    protected void GameMethod() {
         playerInput();
         this.setMap(new Map()); // create Map Instace
         currentMap.setMapSize(size, size); // Set the Map Size
@@ -104,16 +105,43 @@ public class Game {
         int currentPlayer = 0;
         boolean won = false;
         do{
-            playerList.get(currentPlayer).Move();
-            if(playerList.get(currentPlayer) == playerList.get(playerList.size() - 1)){
-                currentPlayer = 0;
-            } else {
-                currentPlayer++;
+            System.out.println("Enter the Key to Move");
+            char c;
+            boolean moveResult = false;
+            do{
+                c = askforKey();
+                moveResult = playerList.get(currentPlayer).movePlayer(c);
+            } while(moveResult != true);
+            char s = playerList.get(currentPlayer).checkStatus();
+            switch(s){
+                case 'W':
+                    won = true;
+                    break;
+                case 'L':
+                    System.out.println("You Lose!");
+                    break;
+                case 'C':
+                    System.out.println("The grass is green!");
+                    break;
+            }
+            if(won != true){
+                if(playerList.get(currentPlayer) == playerList.get(playerList.size() - 1)){
+                    currentPlayer = 0;
+                } else {
+                    currentPlayer++;
+                }
             }
         }while(won == false);
-        
+        System.out.println(playerList.get(currentPlayer) + " Wins!");
         System.out.println("Number of players: " + getPlayers());
         System.out.println("Mapsize is: " + getSize() +"x"+getSize());
+    }
+    
+    public char askforKey(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter your move:");
+        char c = sc.next().charAt(0);
+        return c;
     }
     
     public Map getMap(){
