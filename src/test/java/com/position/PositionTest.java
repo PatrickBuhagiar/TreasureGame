@@ -112,10 +112,28 @@ public class PositionTest {
         y = 5;
         result = instance.OutOfBounds(x, y, g);
         assertEquals(expResult,result);
-        //Test X in, Y in; result false.
+        //Test X in, Y in; result true.
         expResult = true;
         x = 3;
         y = 5;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X in, Y negative; result false.
+        expResult = false;
+        x = 3;
+        y = -1;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X negative, Y ok; result false.
+        expResult = false;
+        x = -1;
+        y = 3;
+        result = instance.OutOfBounds(x, y, g);
+        assertEquals(expResult,result);
+        //Test X negative, Y negative; result false.
+        expResult = false;
+        x = -1;
+        y = -1;
         result = instance.OutOfBounds(x, y, g);
         assertEquals(expResult,result);
     }
