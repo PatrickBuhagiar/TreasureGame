@@ -70,4 +70,27 @@ public class tileTypeTest {
         System.out.println("testTreasure");
         assertNotNull(tileType.TREASURE);
     }
+
+    /**
+     * Test of values method, of class tileType.
+     */
+    @Test
+    public void testValues() {
+        System.out.println("values");
+        tileType[] expResult = {tileType.UNKNOWN, tileType.GRASS, tileType.SEA, tileType.TREASURE};
+        tileType[] result = tileType.values();
+        assertArrayEquals(expResult, result);
+    }
+
+    /**
+     * Test of valueOf method, of class tileType.
+     */
+    @Test
+    public void testValueOf() {
+        System.out.println("valueOf");
+        String name = "GRASS";
+        tileType expResult = tileType.GRASS;
+        tileType result = tileType.valueOf(name);
+        assertEquals(expResult, result);
+    }
 }
