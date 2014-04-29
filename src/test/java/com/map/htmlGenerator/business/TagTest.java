@@ -80,19 +80,6 @@ public class TagTest {
         assertEquals(expResult,result);
     }
 
-    /**
-     * Test of getCode method, of class Tag.
-     */
-    @Test
-    public void testGetCode() {
-        System.out.println("getCode");
-        Tag instance = new TagImpl();
-        instance.setTagName("html");
-        String expResult = "<html></html>";
-        String result = instance.getCode();
-        assertEquals(expResult, result);
-    }
-
     public class TagImpl extends Tag {
     }
     

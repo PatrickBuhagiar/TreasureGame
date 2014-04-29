@@ -80,18 +80,5 @@ public class HtmlTest {
         String result = instance.getCSSStyle();
         assertEquals(expResult,result);
     }
-
-    /**
-     * Test of getCode method, of class Tag.
-     */
-    @Test
-    public void testGetCode() {
-        System.out.println("getCode");
-        Tag instance = new Html();
-        instance.setTagName("html");
-        String expResult = "<html></html>";
-        String result = instance.getCode();
-        assertEquals(expResult, result);
-    }
     
 }

@@ -36,16 +36,6 @@ public abstract class  Tag {
         return cssStyle;
     }
     
-    public String getCode(String contents){
-        String output = "";
-        String openTag = getOpenTag();
-        output += openTag;
-        output += contents;
-        String closeTag = getCloseTag();
-        output += closeTag;
-        return output;
-    }
-    
     public String getCloseTag(){
         return "</" + tagName + ">";
     }

@@ -86,18 +86,5 @@ public class BodyTest {
         String result = instance.getCSSStyle();
         assertEquals(expResult,result);
     }
-
-    /**
-     * Test of getCode method, of class Tag.
-     */
-    @Test
-    public void testGetCode() {
-        System.out.println("getCode");
-        Tag instance = new Body();
-        instance.setTagName("html");
-        String expResult = "<html></html>";
-        String result = instance.getCode();
-        assertEquals(expResult, result);
-    }
     
 }
