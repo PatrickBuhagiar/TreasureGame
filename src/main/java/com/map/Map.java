@@ -47,7 +47,7 @@ public class Map implements iMap {
         }
     }
     
-    private boolean setWinningTile(int n){
+    public boolean setWinningTile(int n){
         int x,y;
         if(n > 0){
             x = randomGenerator.nextInt(map.length);
