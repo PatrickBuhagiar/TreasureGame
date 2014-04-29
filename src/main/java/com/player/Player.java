@@ -5,13 +5,21 @@
  */
 
 package com.player;
-import com.position.Position;
-import java.util.Random;
-import com.pest.suite.Game;
-import com.map.business.tileType;
-import java.io.IOException;
 import com.map.Map;
 import com.map.TableMapRender;
+import com.map.business.tileType;
+import com.pest.suite.Game;
+import com.position.Position;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.Object;
+import java.util.Comparator;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +33,7 @@ public class Player {
     private Position startPosition;
     private TableMapRender tmr;
     
-    public Player(int ID, Game game){
+    public Player(int ID, Game game) throws FileNotFoundException{
         id = ID;
         currentGame = game;
         startPosition = generateStart();
@@ -53,7 +61,7 @@ public class Player {
         currentPosition.setPosition(X, Y);
         return currentPosition;
     }
-    public boolean movePlayer(char c){
+    public boolean movePlayer(char c) throws FileNotFoundException{
         int x = currentPosition.getX();
         int y = currentPosition.getY();
         boolean r = false;
@@ -106,7 +114,7 @@ public class Player {
         return id;
     }
     
-    public void uncoverTile(int x, int y){
+    public void uncoverTile(int x, int y) throws FileNotFoundException{
         if(!currentPosition.OutOfBounds(x,y, currentGame)){
             displayMap.setTileType(x, y, currentGame.getMap().getTileType(x, y));
         }
@@ -133,7 +141,7 @@ public class Player {
         return result;
     }
     
-    public void getRender(){
+    public void getRender() throws FileNotFoundException{
         tmr = new TableMapRender(displayMap.getMap(),"","");
         String code = tmr.generateCode();
         for(int i = 0; i<= displayMap.getMap().length - 1; i++){
@@ -142,6 +150,14 @@ public class Player {
             }
         }
         System.out.println(code);
+        try {
+            String file = "Player " + this.getID() + ".html";
+            PrintWriter writer = new PrintWriter(file, "UTF-8");
+            writer.println(code);
+            writer.close();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 
