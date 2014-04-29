@@ -62,11 +62,9 @@ public class MapTest {
     public void testGetMap() {
         System.out.println("getMap");
         Map instance = new Map();
-        tileType[][] expResult = null;
+        tileType[][] expResult = new tileType[5][5];
         tileType[][] result = instance.getMap();
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -89,8 +87,32 @@ public class MapTest {
         System.out.println("setUnknown");
         Map instance = new Map();
         instance.setUnknown();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        tileType[][] a = instance.getMap();
+        for(int i = 0; i <= a.length - 1; i++){
+            for(int j = 0; j<= a[0].length - 1; i++){
+                assertEquals(a[i][j],tileType.UNKNOWN);
+            }
+        }
+    }
+    
+    /**
+     * Test of setWinningTile method, of class Map.
+     */
+    @Test
+    public void testsetWinningTile() {
+        System.out.println("setWinningTile");
+        Map instance = new Map();
+        instance.setWinningTile(1);
+        int counter = 0;
+        tileType[][] a = instance.getMap();
+        for(int i = 0; i <= a.length - 1; i++){
+            for(int j = 0; j<= a[0].length - 1; i++){
+                if(a[i][j] == tileType.TREASURE){
+                    counter++;
+                }
+            }
+        }
+        assertEquals(1,counter);
     }
 
     /**
@@ -102,11 +124,10 @@ public class MapTest {
         int x = 0;
         int y = 0;
         Map instance = new Map();
-        tileType expResult = null;
-        tileType result = instance.getTileType(x, y);
+        instance.setTileType(2, 2, tileType.SEA);
+        tileType expResult = tileType.SEA;
+        tileType result = instance.getTileType(2, 2);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,13 +136,11 @@ public class MapTest {
     @Test
     public void testSetTileType() {
         System.out.println("setTileType");
-        int x = 0;
-        int y = 0;
-        tileType t = null;
         Map instance = new Map();
-        instance.setTileType(x, y, t);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setTileType(2, 2, tileType.GRASS);
+        tileType expResult = tileType.GRASS;
+        tileType result = instance.getTileType(2, 2);
+        assertEquals(expResult,result);
     }
     
 }
