@@ -20,6 +20,7 @@ public class Game {
     private static int players;
     private int size;
     private Map currentMap;
+    private static ArrayList<Player> playerList = new ArrayList();
     
     private static Game singleton = new Game();
     
@@ -31,20 +32,10 @@ public class Game {
     }
     
     //get singleton instance
-    protected static Game getInstance() {
+    public static Game getInstance() {
         return singleton;
     }
-    
-    //getter for turns
-    private static int getTurns(){
-        return turns;
-    }
-    
-    //increment turns
-    private static void incrementTurn(){
-        turns++;
-    }
-    
+       
     //setter for players
     private static void setPlayers(int x){
         players = x;
@@ -85,13 +76,6 @@ public class Game {
                 varSize = 50;
             }
         }while(varPlayers < 2 || varPlayers > 8);
-       /* PlayerSave p = new PlayerSave("C://");
-        try{
-            p.saveFile();
-        } catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-        }*/
-        
         setPlayers(varPlayers);
         setSize(varSize);
     }
@@ -113,7 +97,7 @@ public class Game {
         currentMap.setMapSize(size, size); // Set the Map Size
         currentMap.generate(); // Generates the Map 
         
-        ArrayList<Player> playerList = new ArrayList();
+       
         for(int i = 0; i< players; i++){
             Player newPlayer = new Player(i,this);
             playerList.add(newPlayer);
@@ -121,10 +105,10 @@ public class Game {
         //Determine who's next to play
         int currentPlayer = 0;
         boolean won = false;
-        
+        //System.out.println("current player is " + currentPlayer + " " + playerList.get(currentPlayer).getID());
         do{
             
-            System.out.println("Player " + playerList.get(currentPlayer).getID() +"'s turn ");
+            System.out.println("Player " + playerList.get(0).getID() +"'s turn ");
             System.out.println("Enter the Key to Move");
             char c;
             boolean moveResult = false;
