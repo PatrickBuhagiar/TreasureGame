@@ -45,12 +45,14 @@ public class PositionTest {
     @Test
     public void testSetPosition() {
         System.out.println("setPosition");
-        int X = 0;
-        int Y = 0;
+        int X = 4;
+        int Y = 3;
         Position instance = new Position();
         instance.setPosition(X, Y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Test X
+        assertEquals(X,instance.getX());
+        // Test Y
+        assertEquals(Y,instance.getY());
     }
 
     /**
@@ -59,12 +61,12 @@ public class PositionTest {
     @Test
     public void testGetX() {
         System.out.println("getX");
+        int X = 4;
+        int Y = 3;
         Position instance = new Position();
-        int expResult = 0;
-        int result = instance.getX();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setPosition(X, Y);
+        // Test X
+        assertEquals(X,instance.getX());
     }
 
     /**
@@ -73,12 +75,12 @@ public class PositionTest {
     @Test
     public void testGetY() {
         System.out.println("getY");
+        int X = 4;
+        int Y = 3;
         Position instance = new Position();
-        int expResult = 0;
-        int result = instance.getY();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setPosition(X, Y);
+        // Test Y
+        assertEquals(Y,instance.getY());
     }
 
     /**
@@ -89,11 +91,11 @@ public class PositionTest {
         System.out.println("OutOfBounds");
         int x = 0;
         int y = 0;
-        Game currentGame = null;
-        Position instance = new Position();
+        //Game 
+        //Position instance = new Position();
         boolean expResult = false;
-        boolean result = instance.OutOfBounds(x, y, currentGame);
-        assertEquals(expResult, result);
+        //boolean result = instance.OutOfBounds(x, y, currentGame);
+        //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
