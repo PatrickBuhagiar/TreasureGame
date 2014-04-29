@@ -37,8 +37,9 @@ public class Player {
         id = ID;
         currentGame = game;
         startPosition = generateStart();
-        System.out.println("start: " + startPosition.getX() + "," + startPosition.getY());
         currentPosition = startPosition;
+        System.out.println("start: " + startPosition.getX() + "," + startPosition.getY());
+        System.out.println("start: " + currentPosition.getX() + "," + currentPosition.getY());
         displayMap = new Map();
         displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
         displayMap.setUnknown();
@@ -73,19 +74,19 @@ public class Player {
         boolean r = false;
             switch(c){
                 case 'w':
-                    if(!currentPosition.OutOfBounds(x,(y-1), currentGame)){
-                        currentPosition.setPosition(x,(y-1));
+                    if(!currentPosition.OutOfBounds((x-1),y, currentGame)){
+                        currentPosition.setPosition((x-1),y);
                         r = true;
-                        uncoverTile(currentPosition.getX(),currentPosition.getY());
+                        uncoverTile((x-1),y);
                     } else {
                      System.out.println("Out of Bounds Please Re-Enter");
                         r = false;
                     }
                     break;
                 case 'a':
-                    if(!currentPosition.OutOfBounds(x-1,y, currentGame)){
-                        currentPosition.setPosition(x-1,y);
-                        uncoverTile(x-1,y);
+                    if(!currentPosition.OutOfBounds(x,(y-1), currentGame)){
+                        currentPosition.setPosition(x,(y-1));
+                        uncoverTile(x,(y-1));
                         r = true;
                     } else {
                         System.out.println("Out of Bounds Please Re-Enter");
@@ -93,9 +94,9 @@ public class Player {
                     }
                     break;
                 case 's':
-                    if(!currentPosition.OutOfBounds(x,y+1, currentGame)){
-                        currentPosition.setPosition(x,y+1);
-                        uncoverTile(x,y+1);
+                    if(!currentPosition.OutOfBounds((x+1),y, currentGame)){
+                        currentPosition.setPosition((x+1),y);
+                        uncoverTile((x+1),y);
                         r = true;
                     } else {
                         System.out.println("Out of Bounds Please Re-Enter");
@@ -103,9 +104,9 @@ public class Player {
                     }
                     break;
                 case 'd':
-                    if(!currentPosition.OutOfBounds(x+1,y, currentGame)){
-                        currentPosition.setPosition(x+1,y);
-                        uncoverTile(x+1,y);
+                    if(!currentPosition.OutOfBounds(x,(y+1), currentGame)){
+                        currentPosition.setPosition(x,(y+1));
+                        uncoverTile(x,(y+1));
                         r = true;
                     } else {
                         System.out.println("Out of Bounds Please Re-Enter");
