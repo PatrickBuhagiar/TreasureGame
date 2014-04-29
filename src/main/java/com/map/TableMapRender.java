@@ -57,6 +57,7 @@ public class TableMapRender extends htmlPage {
                        break;
                }
                o = o + tdTag.getOpenTag();
+               o = o + i + "," + j;
                o = o + tdTag.getCloseTag();
            }
            o = o + trTag.getCloseTag();
