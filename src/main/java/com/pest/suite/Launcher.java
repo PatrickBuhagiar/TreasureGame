@@ -5,13 +5,14 @@
  */
 
 package com.pest.suite;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 /**
  *
  * @author Jake
  */
 public class Launcher {
-    public static void main(String[]args){
+    public static void main(String[]args) throws FileNotFoundException{
         Game g = Game.getInstance();
             g.GameMethod();
     }

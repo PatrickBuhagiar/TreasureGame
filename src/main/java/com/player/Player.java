@@ -37,6 +37,7 @@ public class Player {
         id = ID;
         currentGame = game;
         startPosition = generateStart();
+        System.out.println("start: " + startPosition.getX() + "," + startPosition.getY());
         currentPosition = startPosition;
         displayMap = new Map();
         displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
@@ -64,11 +65,16 @@ public class Player {
     public boolean movePlayer(char c) throws FileNotFoundException{
         int x = currentPosition.getX();
         int y = currentPosition.getY();
+        System.out.println("this Position: " + x + "," +y );
+        System.out.println("w: " + (x-1) + "," + y );
+        System.out.println("a: " + x + "," +(y-1) );
+        System.out.println("s: " + (x+1) + "," +y );
+        System.out.println("d: " + x + "," +(y+1) );
         boolean r = false;
             switch(c){
                 case 'w':
-                    if(!currentPosition.OutOfBounds(x,y-1, currentGame)){
-                        currentPosition.setPosition(x,y-1);
+                    if(!currentPosition.OutOfBounds(x,(y-1), currentGame)){
+                        currentPosition.setPosition(x,(y-1));
                         r = true;
                         uncoverTile(currentPosition.getX(),currentPosition.getY());
                     } else {

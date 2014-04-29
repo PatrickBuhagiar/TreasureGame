@@ -10,6 +10,7 @@ import com.map.Map;
 import com.player.Player;
 import java.io.IOException;
 import com.io.PlayerSave;
+import java.io.FileNotFoundException;
 /**
  *
  * @author Patrick
@@ -100,7 +101,13 @@ public class Game {
  * and map size.
  */
     
-    protected void GameMethod() {
+    /**
+     * Contains the main working algortihms for class
+ including input verification of number of players
+ and map size.
+     * @throws java.io.FileNotFoundException
+     */
+    protected void GameMethod() throws FileNotFoundException {
         playerInput();
         this.setMap(new Map()); // create Map Instace
         currentMap.setMapSize(size, size); // Set the Map Size
