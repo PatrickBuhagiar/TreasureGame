@@ -6,7 +6,7 @@
 
 package com.position;
 
-import com.game.Game;
+import com.pest.suite.Game;
 /**
  *
  * @author Patrick

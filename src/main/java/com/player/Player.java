@@ -7,7 +7,7 @@
 package com.player;
 import com.position.Position;
 import java.util.Random;
-import com.game.Game;
+import com.pest.suite.Game;
 import com.map.business.tileType;
 import java.io.IOException;
 

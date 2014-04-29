@@ -5,13 +5,13 @@
  */
 
 package com.pest.suite;
-
 /**
  *
  * @author Jake
  */
 public class Launcher {
     public static void main(String[]args){
-        System.out.println("Hello World!");
+        Game g = Game.getInstance();
+        g.GameMethod();
     }
 }

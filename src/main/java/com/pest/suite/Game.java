@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game;
+package com.pest.suite;
 import java.util.Scanner;
+import java.util.ArrayList;
 import com.map.Map;
+import com.player.Player;
 /**
  *
  * @author Patrick
@@ -17,6 +19,7 @@ public class Game {
     private Map currentMap;
     
     private static Game singleton = new Game();
+    
      //Private constructor so as to prevent any other class from instantiating
     private Game(){
         turns = 0;
@@ -110,6 +113,13 @@ public class Game {
                 }
                 loop=false;
             }
+            Map m = new Map(); // Create a Map Instance
+            m.setMapSize(y, y); // Set the Map Size
+            m.generate(); // Generates the Map 
+            ArrayList<Player> playerList = new ArrayList();
+            for(int i = 0; i<= x; i++){
+                playerList.add(new Player(i,this));
+            }
         }
         //set class variables
         setPlayers(x);
@@ -122,5 +132,8 @@ public class Game {
     
     public Map getMap(){
         return currentMap;
+    }
+    public void setMap(Map m){
+        this.currentMap = m;
     }
 }

@@ -50,7 +50,8 @@ public class Map implements iMap {
                    for(int j = 0; j<= map[0].length - 1; j++){
                        map[x][y] = tileType.TREASURE;
                    }
-               } 
+               }
+               n--;
             }while(n > 0);
             return true;
         }
