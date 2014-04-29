@@ -25,6 +25,10 @@ public class Map implements iMap {
         return true;
     }
     
+    public tileType[][] getMap(){
+        return map;
+    }
+    
     @Override
     public void generate(){
         setWinningTile(1);

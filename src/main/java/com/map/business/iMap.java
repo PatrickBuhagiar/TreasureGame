@@ -15,4 +15,5 @@ public interface iMap {
     public void generate();
     public tileType getTileType(int x, int y);
     public void setTileType(int x, int y, tileType t);
+    public tileType[][] getMap();
 }
