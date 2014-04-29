@@ -79,6 +79,19 @@ public class TagTest {
         String result = instance.getCSSStyle();
         assertEquals(expResult,result);
     }
+    
+    /**
+     * Test of getCloseTag method, of class Tag.
+     */
+    @Test
+    public void testgetCloseTag() {
+        Tag instance = new TagImpl();
+        String name = "html";
+        instance.setTagName(name);
+        String expResult = "<//" + "name" + ">";
+        String result = instance.getCloseTag();
+        assertEquals(expResult,result);
+    }
 
     public class TagImpl extends Tag {
     }
