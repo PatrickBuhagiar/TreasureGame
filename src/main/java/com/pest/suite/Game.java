@@ -92,14 +92,10 @@ public class Game {
  */
     protected void GameMethod() {
         playerInput();
-        Map m = new Map(); // Create a Map Instance
-        m.setMapSize(size, size); // Set the Map Size
-        m.generate(); // Generates the Map 
-        for(int i = 0; i<= m.getMap().length - 1; i++){
-            for(int j = 0; j<= m.getMap()[0].length - 1; j++){
-                System.out.print(m.getMap()[i][j]);
-            }
-        }
+        this.setMap(new Map()); // create Map Instace
+        currentMap.setMapSize(size, size); // Set the Map Size
+        currentMap.generate(); // Generates the Map 
+        
         ArrayList<Player> playerList = new ArrayList();
         for(int i = 0; i<= players; i++){
             playerList.add(new Player(i,this));

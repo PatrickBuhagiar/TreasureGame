@@ -28,16 +28,13 @@ public class Player {
     
     private Position generateStart(){
         Random randomGenerator = new Random();
-        boolean loop = true;
+        
         int X=0,Y=0;
-        while (loop){
-            X = randomGenerator.nextInt(currentGame.getSize());
-            Y = randomGenerator.nextInt(currentGame.getSize());
-            //Jake Arrange this
-            if (currentGame.getMap().getTileType(X, Y) == tileType.GRASS){
-                loop = false;
-            }
-        }
+        
+        do{            
+            X = randomGenerator.nextInt(currentGame.getSize() - 1);
+            Y = randomGenerator.nextInt(currentGame.getSize() - 1);
+        }while(currentGame.getMap().getTileType(X, Y) != tileType.GRASS);
         Position currentPosition = new Position();
         currentPosition.setPosition(X, Y);
         return currentPosition;
