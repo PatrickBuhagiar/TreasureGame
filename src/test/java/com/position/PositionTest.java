@@ -137,5 +137,4 @@ public class PositionTest {
         result = instance.OutOfBounds(x, y, g);
         assertEquals(expResult,result);
     }
-    
 }
