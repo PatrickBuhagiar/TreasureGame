@@ -44,11 +44,10 @@ public class htmlPageTest {
     @Test
     public void testSetHtmlStyle() {
         System.out.println("setHtmlStyle");
-        String style = "";
+        String style = "style=500px;";
         htmlPage instance = new htmlPageImpl();
         instance.setHtmlStyle(style);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(style,instance.getHtmlStyle());
     }
 
     /**
@@ -57,14 +56,36 @@ public class htmlPageTest {
     @Test
     public void testSetBodyStyle() {
         System.out.println("setBodyStyle");
-        String style = "";
+        String style = "style=500px;";
         htmlPage instance = new htmlPageImpl();
         instance.setBodyStyle(style);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(style,instance.getBodyStyle());
+    }
+    
+    /**
+     * Test of getHtmlStyle method, of class htmlPage.
+     */
+    @Test
+    public void testGetHtmlStyle() {
+        System.out.println("setHtmlStyle");
+        String style = "style=500px;";
+        htmlPage instance = new htmlPageImpl();
+        instance.setHtmlStyle(style);
+        assertEquals(style,instance.getHtmlStyle());
+    }
+
+    /**
+     * Test of getBodyStyle method, of class htmlPage.
+     */
+    @Test
+    public void testGetBodyStyle() {
+        System.out.println("setBodyStyle");
+        String style = "style=500px;";
+        htmlPage instance = new htmlPageImpl();
+        instance.setBodyStyle(style);
+        assertEquals(style,instance.getBodyStyle());
     }
 
     public class htmlPageImpl extends htmlPage {
     }
-    
 }
