@@ -37,7 +37,7 @@ public class TagTest {
     @After
     public void tearDown() {
     }
-
+    
     /**
      * Test of setTagName method, of class Tag.
      */
@@ -113,5 +113,4 @@ public class TagTest {
 
     public class TagImpl extends Tag {
     }
-    
 }
