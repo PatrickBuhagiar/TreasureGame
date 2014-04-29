@@ -37,7 +37,7 @@ public class TagTest {
     @After
     public void tearDown() {
     }
-
+    
     /**
      * Test of setTagName method, of class Tag.
      */
@@ -92,8 +92,25 @@ public class TagTest {
         String result = instance.getCloseTag();
         assertEquals(expResult,result);
     }
+    /**
+     * Test of getOpenTag method, of class Tag.
+     */
+    @Test
+    public void testgetOpenTag() {
+        Tag instance = new TagImpl();
+        String name = "html";
+        instance.setTagName(name);
+        String expResult = "<" + name + ">";
+        String result = instance.getOpenTag();
+        // Test Case without Style
+        assertEquals(expResult,result);
+        // Test Case with Style
+        String style = "width:500px;";
+        instance.setCSSStyle("width:500px;");
+        expResult = "< style=\"" + style + "\"" + name + ">";
+        assertEquals(expResult,instance.getOpenTag());
+    }
 
     public class TagImpl extends Tag {
     }
-    
 }
