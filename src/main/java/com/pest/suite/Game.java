@@ -8,8 +8,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.map.Map;
 import com.player.Player;
-import java.io.IOException;
-import com.io.PlayerSave;
 import java.io.FileNotFoundException;
 /**
  *
@@ -25,7 +23,7 @@ public class Game {
     
      //Private constructor so as to prevent any other class from instantiating
     private Game(){
-        players = 0;
+        
         size = 0;
     }
     
@@ -94,7 +92,8 @@ public class Game {
         this.setMap(new Map()); // create Map Instace
         currentMap.setMapSize(size, size); // Set the Map Size
         currentMap.generate(); // Generates the Map 
-        
+        System.out.println("Number of players: " + getPlayers());
+        System.out.println("Mapsize is: " + getSize() +"x"+getSize());
        
         for(int i = 0; i< players; i++){
             Player newPlayer = new Player(i,this);
@@ -106,10 +105,10 @@ public class Game {
         //System.out.println("current player is " + currentPlayer + " " + playerList.get(currentPlayer).getID());
         do{
             
-            System.out.println("Player " + playerList.get(0).getID() +"'s turn ");
+            System.out.println("Player " + playerList.get(currentPlayer).getID() +"'s turn ");
             System.out.println("Enter the Key to Move");
             char c;
-            boolean moveResult = false;
+            boolean moveResult;
             do{
                 c = askforKey();
                 moveResult = playerList.get(currentPlayer).movePlayer(c);
@@ -129,17 +128,17 @@ public class Game {
                     System.out.println("The grass is green!");
                     break;
             }
-            if(won != true){
-                if(playerList.get(currentPlayer) == playerList.get(playerList.size() - 1)){
+            if(!won){
+                if(currentPlayer == (players-1)){
                     currentPlayer = 0;
                 } else {
                     currentPlayer++;
                 }
             }
         }while(won == false);
+        
         System.out.println(playerList.get(currentPlayer) + " Wins!");
-        System.out.println("Number of players: " + getPlayers());
-        System.out.println("Mapsize is: " + getSize() +"x"+getSize());
+        
     }
     
     public char askforKey(){
