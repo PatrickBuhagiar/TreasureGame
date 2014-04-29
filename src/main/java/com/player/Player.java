@@ -28,8 +28,13 @@ public class Player {
         startPosition = generateStart();
         currentPosition = startPosition;
         displayMap = new Map();
+        displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
         displayMap.setUnknown();
         uncoverTile(currentPosition.getX(),currentPosition.getY());
+    }
+    
+    public void ResetPosition(){
+        currentPosition = startPosition;
     }
     
     private Position generateStart(){
@@ -92,6 +97,10 @@ public class Player {
                     break;
             }
             return r;
+    }
+    
+    public int getID(){
+        return id;
     }
     
     public void uncoverTile(int x, int y){

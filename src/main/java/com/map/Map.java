@@ -17,7 +17,7 @@ public class Map implements iMap {
     private tileType map [][];
     private final Random randomGenerator = new Random();
     public Map(){
-        map = new tileType [5][5];
+        map = new tileType [55][];
     }
     @Override
     public boolean setMapSize(int x, int y){

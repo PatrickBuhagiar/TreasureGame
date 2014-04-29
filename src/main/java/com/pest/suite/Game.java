@@ -73,16 +73,18 @@ public class Game {
                 do{
                     System.out.println("Please enter a map size between 5 and 50:");
                     varSize = sc.nextInt();
-                }while(varSize > 5 && varSize <  50);
-            } else if((varPlayers > 5) && (varPlayers < 8)){
+                }while(varSize > 4 && varSize <=  50);
+            } else if((varPlayers > 4) && (varPlayers <= 8)){
                 do{
                     System.out.println("Please enter a map size between 8 and 50:");
                     varSize = sc.nextInt();
-                }while(varSize >  5 && varSize <  50);
+                }while(varSize <  8 || varSize >  50);
             } else {
                 varSize = 50;
             }
-        }while(varPlayers < 2 && varPlayers > 8);
+        }while(varPlayers < 2 || varPlayers > 8);
+        
+        
         setPlayers(varPlayers);
         setSize(varSize);
     }
@@ -99,26 +101,30 @@ public class Game {
         currentMap.generate(); // Generates the Map 
         
         ArrayList<Player> playerList = new ArrayList();
-        for(int i = 0; i<= players; i++){
+        for(int i = 0; i<= players-1; i++){
             playerList.add(new Player(i,this));
         }
         int currentPlayer = 0;
         boolean won = false;
         do{
+            System.out.println("Player " + playerList.get(currentPlayer).getID() +"'s turn ");
             System.out.println("Enter the Key to Move");
             char c;
             boolean moveResult = false;
             do{
                 c = askforKey();
                 moveResult = playerList.get(currentPlayer).movePlayer(c);
+                
             } while(moveResult != true);
+            
             char s = playerList.get(currentPlayer).checkStatus();
             switch(s){
                 case 'W':
                     won = true;
                     break;
                 case 'L':
-                    System.out.println("You Lose!");
+                    System.out.println("You Lose! Start again");
+                    playerList.get(currentPlayer).ResetPosition();
                     break;
                 case 'C':
                     System.out.println("The grass is green!");
