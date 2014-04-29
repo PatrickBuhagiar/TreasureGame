@@ -35,17 +35,17 @@ public class Game {
     }
        
     //setter for players
-    private static void setPlayers(int x){
+    public static void setPlayers(int x){
         players = x;
     }
     
     //setter for Map size
-    private void setSize(int x){
+    public void setSize(int x){
         size = x;
     }
     
     //getter for players
-    private  int getPlayers(){
+    public  int getPlayers(){
         return players;
     }
     
@@ -89,7 +89,7 @@ public class Game {
  and map size.
      * @throws java.io.FileNotFoundException
      */
-    protected void GameMethod() throws FileNotFoundException {
+    public void GameMethod() throws FileNotFoundException {
         playerInput();
         this.setMap(new Map()); // create Map Instace
         currentMap.setMapSize(size, size); // Set the Map Size
