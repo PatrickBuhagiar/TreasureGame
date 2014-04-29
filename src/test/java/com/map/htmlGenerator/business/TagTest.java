@@ -100,9 +100,15 @@ public class TagTest {
         Tag instance = new TagImpl();
         String name = "html";
         instance.setTagName(name);
-        String expResult = "<" + "name" + ">";
+        String expResult = "<" + name + ">";
         String result = instance.getOpenTag();
+        // Test Case without Style
         assertEquals(expResult,result);
+        // Test Case with Style
+        String style = "width:500px;";
+        instance.setCSSStyle("width:500px;");
+        expResult = "< style=\"" + style + "\"" + name + ">";
+        assertEquals(expResult,instance.getOpenTag());
     }
 
     public class TagImpl extends Tag {
