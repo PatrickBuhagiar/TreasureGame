@@ -118,7 +118,7 @@ public class MapTest {
         }
         assertEquals(1,counter);
         assertEquals(instance.setWinningTile(1), true);
-        assertEquals(instance.setWinningTile(-1), true);
+        assertEquals(instance.setWinningTile(-1), false);
     }
 
     /**
