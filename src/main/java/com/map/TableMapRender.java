@@ -32,8 +32,8 @@ public class TableMapRender extends htmlPage {
     public void setPlayerPoint(Position p){
         this.playerPoint = p;
     }
-    public Position getPlayerPoint(Position p){
-        return p;
+    public Position getPlayerPoint(){
+        return playerPoint;
     }
       public String generateCode(){
        super.htmlTag.setCSSStyle("display: table; margin: auto;");
