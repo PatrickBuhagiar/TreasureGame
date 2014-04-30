@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package com.pest.suite;
-import java.util.Scanner;
-import java.util.ArrayList;
 import com.map.Map;
 import com.player.Player;
+import java.io.Console;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author Patrick
@@ -19,7 +20,8 @@ public class Game {
     private static int players;
     private int size;
     private Map currentMap;
-    private static final ArrayList<Player> playerList = new ArrayList();
+    private static  ArrayList<Player> playerList = new ArrayList();
+    private int currentPlayer;
     
     private static final Game singleton = new Game();
     
@@ -100,9 +102,14 @@ public class Game {
         for(int i = 0; i< players; i++){
             Player newPlayer = new Player(i,this);
             playerList.add(newPlayer);
+            //System.out.println("Player " + i +": " + newPlayer.getPos().getX() + "," + newPlayer.getPos().getY());
+            //System.out.println("Player "+i+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
+        }
+        for(int i = 0; i< players; i++){
+            System.out.println("Player "+playerList.get(i).getID()+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
         }
         //Determine who's next to play
-        int currentPlayer = 0;
+        currentPlayer =0;
         boolean won = false;
         //System.out.println("current player is " + currentPlayer + " " + playerList.get(currentPlayer).getID());
         do{
@@ -112,7 +119,10 @@ public class Game {
             char c;
             boolean moveResult;
             do{
+                System.out.println("pos:" + playerList.get(0).getPos().getX() + ","+playerList.get(0).getPos().getY());
+                
                 c = askforKey();
+                System.out.println("read key. current Player = " + currentPlayer);
                 moveResult = playerList.get(currentPlayer).movePlayer(c);
                 
             } while(moveResult != true);
@@ -137,9 +147,12 @@ public class Game {
                     currentPlayer++;
                 }
             }
+            Scanner key = new Scanner(System.in);
+            System.out.println("press enter for next player");
+            key.nextLine();
         }while(won == false);
         
-        System.out.println(playerList.get(currentPlayer) + " Wins!");
+        System.out.println("Player "+playerList.get(currentPlayer).getID() + " Wins!");
         
     }
     

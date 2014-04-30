@@ -12,8 +12,8 @@ import com.pest.suite.Game;
  * @author Patrick
  */
 public class Position {
-    private static int x = 0;
-    private static int y = 0;
+    private int x;
+    private int y;
 
     
     public void setPosition(int X, int Y){

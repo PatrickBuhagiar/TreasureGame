@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  * @author Patrick
  */
 public class Player {
-    private final int id;
+    private int id;
     private Position currentPosition;
-    private final Map displayMap;
-    private final Game currentGame;
-    private final Position startPosition;
+    private Map displayMap;
+    private Game currentGame;
+    private Position startPosition;
     private TableMapRender tmr;
     
     public Player(int ID, Game game) throws FileNotFoundException{
@@ -34,8 +34,6 @@ public class Player {
         currentGame = game;
         startPosition = generateStart();
         currentPosition = startPosition;
-        System.out.println("start: " + startPosition.getX() + "," + startPosition.getY());
-        System.out.println("start: " + currentPosition.getX() + "," + currentPosition.getY());
         displayMap = new Map();
         displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
         displayMap.setUnknown();
@@ -44,6 +42,10 @@ public class Player {
     
     public void ResetPosition(){
         currentPosition = startPosition;
+    }
+    
+    public Position getPos(){
+        return currentPosition;
     }
     
     private Position generateStart(){
