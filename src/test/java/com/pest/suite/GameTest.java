@@ -99,6 +99,7 @@ public class GameTest {
         System.out.println("getMap");
         Game instance = Game.getInstance();
         Map expResult = new Map();
+        instance.setMap(expResult);
         Map result = instance.getMap();
         assertEquals(expResult, result);
     }
