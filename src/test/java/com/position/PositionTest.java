@@ -92,7 +92,7 @@ public class PositionTest {
         int x = 0;
         int y = 0;
         Game g = Game.getInstance();
-        g.setSize(5);
+        g.setSize(6);
         Position instance = new Position();
         //Test X out, Y in; result false.
         boolean expResult = false;
