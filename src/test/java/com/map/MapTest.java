@@ -119,7 +119,7 @@ public class MapTest {
      * Test of getTileType method, of class Map.
      */
     @Test
-    public void testGetTileType() {
+    public void testgetTileType() {
         System.out.println("getTileType");
         int x = 0;
         int y = 0;
@@ -134,7 +134,7 @@ public class MapTest {
      * Test of setTileType method, of class Map.
      */
     @Test
-    public void testSetTileType() {
+    public void testsetTileType() {
         System.out.println("setTileType");
         Map instance = new Map();
         instance.setTileType(2, 2, tileType.GRASS);
