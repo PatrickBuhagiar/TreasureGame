@@ -89,15 +89,6 @@ public class GameTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of GameMethod method, of class Game.
-     */
-    @Test
-    public void testGameMethod() throws Exception {
-        System.out.println("GameMethod");
-        Game instance = Game.getInstance();
-        instance.GameMethod();
-    }
 
     
     /**
