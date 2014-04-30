@@ -148,6 +148,7 @@ public class Player {
     
     public void getRender() throws FileNotFoundException{
         tmr = new TableMapRender(displayMap.getMap(),"","");
+        tmr.setPlayerPoint(currentPosition);
         String code = tmr.generateCode();
         for(int i = 0; i<= displayMap.getMap().length - 1; i++){
             for(int j = 0; j<= displayMap.getMap()[0].length - 1; j++){
