@@ -99,18 +99,7 @@ public class GameTest {
         instance.GameMethod();
     }
 
-    /**
-     * Test of askforKey method, of class Game.
-     */
-    @Test
-    public void testAskforKey() {
-        System.out.println("askforKey");
-        Game instance = Game.getInstance();
-        char expResult = 'c';
-        char result = instance.askforKey();
-        assertEquals(expResult, result);
-    }
-
+    
     /**
      * Test of getMap method, of class Game.
      */
