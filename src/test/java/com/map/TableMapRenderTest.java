@@ -44,12 +44,13 @@ public class TableMapRenderTest {
     @Test
     public void testGenerateCode() {
         System.out.println("generateCode");
-        TableMapRender instance = null;
-        String expResult = "";
+        Map p = new Map();
+        p.setUnknown();
+        TableMapRender instance = new TableMapRender(p.getMap(),"","");
+        System.out.println(instance.generateCode());
+        String expResult = "<html style=\"display: table; margin: auto;\"><body style=\"display: table-cell; vertical-align: middle;\"><table><tr><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">0,0</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">0,1</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">0,2</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">0,3</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">0,4</td></tr><tr><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">1,0</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">1,1</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">1,2</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">1,3</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">1,4</td></tr><tr><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">2,0</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">2,1</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">2,2</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">2,3</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">2,4</td></tr><tr><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">3,0</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">3,1</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">3,2</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">3,3</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">3,4</td></tr><tr><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">4,0</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">4,1</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">4,2</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">4,3</td><td style=\"width:50px;height:50px;background-color:#999;padding:10px;margin:10px;\">4,4</td></tr></table></body></html>";
         String result = instance.generateCode();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -77,7 +77,7 @@ public class tileTypeTest {
     @Test
     public void testValues() {
         System.out.println("values");
-        tileType[] expResult = {tileType.UNKNOWN, tileType.GRASS, tileType.SEA, tileType.TREASURE};
+        tileType[] expResult = {tileType.UNKNOWN, tileType.SEA, tileType.GRASS, tileType.TREASURE};
         tileType[] result = tileType.values();
         assertArrayEquals(expResult, result);
     }

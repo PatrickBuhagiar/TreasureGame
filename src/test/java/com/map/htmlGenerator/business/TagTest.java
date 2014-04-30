@@ -88,7 +88,7 @@ public class TagTest {
         Tag instance = new TagImpl();
         String name = "html";
         instance.setTagName(name);
-        String expResult = "<//" + "name" + ">";
+        String expResult = "</" + name + ">";
         String result = instance.getCloseTag();
         assertEquals(expResult,result);
     }
@@ -107,7 +107,7 @@ public class TagTest {
         // Test Case with Style
         String style = "width:500px;";
         instance.setCSSStyle("width:500px;");
-        expResult = "< style=\"" + style + "\"" + name + ">";
+        expResult = "<" + name + " style=\"" + style + "\">";
         assertEquals(expResult,instance.getOpenTag());
     }
 
