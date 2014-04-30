@@ -211,4 +211,27 @@ public class PlayerTest {
         }
     }
     
+    /**
+     * Test of setStartPosition method, of class Player.
+     */
+    @Test
+    public void testsetStartPosition() {
+        System.out.println("checkStatus");
+        try{
+            Game g = Game.getInstance();
+            g.setSize(5);
+            Player instance = new Player(2,g);
+            Map m = new Map();
+            m.setMapSize(5, 5);
+            m.generate();
+            g.setMap(m);
+            instance.setStartPosition(2,2);
+            Position expResult = new Position();
+            expResult.setPosition(2, 2);
+            assertEquals(instance.getStartPosition().getX(),expResult.getX());
+            assertEquals(instance.getStartPosition().getY(),expResult.getY());
+            } catch(FileNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
