@@ -83,7 +83,7 @@ public class MapTest {
      * Test of setUnknown method, of class Map.
      */
     @Test
-    public void testSetUnknown() {
+    public void testsetUnknown() {
         System.out.println("setUnknown");
         Map instance = new Map();
         instance.setUnknown();
@@ -113,6 +113,8 @@ public class MapTest {
             }
         }
         assertEquals(1,counter);
+        assertEquals(instance.setWinningTile(1), true);
+        assertEquals(instance.setWinningTile(-1), true);
     }
 
     /**
