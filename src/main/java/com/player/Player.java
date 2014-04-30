@@ -29,6 +29,7 @@ public class Player {
     private Position startPosition;
     private TableMapRender tmr;
     
+    //constructor
     public Player(int ID, Game game) throws FileNotFoundException{
         id = ID;
         currentGame = game;
@@ -62,7 +63,7 @@ public class Player {
         int X=0,Y=0;
         
         do{            
-            X = randomGenerator.nextInt(currentGame.getSize() - 1);
+            X = randomGenerator.nextInt(currentGame.getSize() - 1); 
             Y = randomGenerator.nextInt(currentGame.getSize() - 1);
         }while(currentGame.getMap().getTileType(X, Y) != tileType.GRASS);
         Position P = new Position();
