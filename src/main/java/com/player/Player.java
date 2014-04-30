@@ -40,6 +40,14 @@ public class Player {
         uncoverTile(startPosition.getX(),startPosition.getY());
     }
     
+    public void setStartPosition(int X, int Y){
+        startPosition.setPosition(X, Y);
+    }
+    
+    public Position getStartPosition(){
+        return startPosition;
+    }
+    
     public void ResetPosition(){
         currentPosition = startPosition;
     }
