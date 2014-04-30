@@ -87,10 +87,9 @@ public class MapTest {
         System.out.println("setUnknown");
         Map instance = new Map();
         instance.setUnknown();
-        tileType[][] a = instance.getMap();
-        for(int i = 0; i <= a.length - 1; i++){
-            for(int j = 0; j<= a[0].length - 1; i++){
-                assertEquals(a[i][j],tileType.UNKNOWN);
+        for(int i = 0; i <= instance.getMap().length - 1; i++){
+            for(int j = 0; j<= instance.getMap()[0].length - 1; j++){
+                assertEquals(instance.getMap()[i][j],tileType.UNKNOWN);
             }
         }
     }
@@ -104,10 +103,9 @@ public class MapTest {
         Map instance = new Map();
         instance.setWinningTile(1);
         int counter = 0;
-        tileType[][] a = instance.getMap();
-        for(int i = 0; i <= a.length - 1; i++){
-            for(int j = 0; j<= a[0].length - 1; i++){
-                if(a[i][j] == tileType.TREASURE){
+        for(int i = 0; i <= instance.getMap().length - 1; i++){
+            for(int j = 0; j<= instance.getMap()[0].length - 1; j++){
+                if(instance.getMap()[i][j] == tileType.TREASURE){
                     counter++;
                 }
             }
