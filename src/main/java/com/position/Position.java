@@ -30,7 +30,7 @@ public class Position {
     }
     
     public boolean OutOfBounds(int x, int y, Game currentGame){
-        if ((y<0)||(y>currentGame.getSize())||(x<0)||(x>currentGame.getSize())){
+        if ((y<0)||((y>currentGame.getSize()-1))||(x<0)||(x>currentGame.getSize())){
             return true;
         }
         return false;

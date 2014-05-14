@@ -18,6 +18,7 @@ import java.util.Scanner;
  */
 public class Game {
     private static int players;
+    private int teams;
     private int size;
     private Map currentMap;
     private static  ArrayList<Player> playerList = new ArrayList();
@@ -37,8 +38,16 @@ public class Game {
     }
        
     //setter for players
-    public static void setPlayers(int x){
+    public void setPlayers(int x){
         players = x;
+    }
+    
+    public void setTeamNo(int x){
+        teams = x;
+    }
+    
+    public int getTeamNo(){
+        return teams;
     }
     
     //setter for Map size
@@ -58,7 +67,7 @@ public class Game {
     
     private void playerInput(){
         Scanner sc = new Scanner(System.in);
-        int varSize, varPlayers;
+        int varSize, varPlayers, varTeams;
         do{
             System.out.println("Welcome! How many players are you?");
             varPlayers = sc.nextInt();
@@ -76,6 +85,11 @@ public class Game {
                 varSize = 50;
             }
         }while(varPlayers < 2 || varPlayers > 8);
+        do {
+         System.out.println("Please enter number of teams: ");
+         varTeams = sc.nextInt();
+        } while (varTeams>0);
+        setTeamNo(varTeams);
         setPlayers(varPlayers);
         setSize(varSize);
     }
@@ -102,7 +116,8 @@ public class Game {
         for(int i = 0; i< players; i++){
             Player newPlayer = new Player(i,this);
             playerList.add(newPlayer);
-            //System.out.println("Player " + i +": " + newPlayer.getPos().getX() + "," + newPlayer.getPos().getY());
+            System.out.println("Player " + i +": " + newPlayer.getPos().getX() + "," + newPlayer.getPos().getY());
+            
             //System.out.println("Player "+i+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
         }
         for(int i = 0; i< players; i++){
@@ -111,15 +126,16 @@ public class Game {
         //Determine who's next to play
         currentPlayer =0;
         boolean won = false;
+        char c;
         //System.out.println("current player is " + currentPlayer + " " + playerList.get(currentPlayer).getID());
         do{
             
             System.out.println("Player " + playerList.get(currentPlayer).getID() +"'s turn ");
             System.out.println("Enter the Key to Move");
-            char c;
+            
             boolean moveResult;
             do{
-                System.out.println("pos:" + playerList.get(0).getPos().getX() + ","+playerList.get(0).getPos().getY());
+                System.out.println("pos: cha" + playerList.get(currentPlayer).getPos().getX() + ","+playerList.get(currentPlayer).getPos().getY());
                 
                 c = askforKey();
                 System.out.println("read key. current Player = " + currentPlayer);
@@ -138,6 +154,7 @@ public class Game {
                     break;
                 case 'C':
                     System.out.println("The grass is green!");
+                    
                     break;
             }
             if(!won){
