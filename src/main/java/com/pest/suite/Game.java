@@ -140,7 +140,8 @@ public class Game {
             SETS RANDOM POSITION
         */
         
-        for(int i = 0; i< players; i++){
+        for(int i = 0; i< playerList.size()-1; i++){
+            System.out.println("test");
             System.out.println("Player "+playerList.get(i).getID()+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
         }
         //Determine who's next to play
