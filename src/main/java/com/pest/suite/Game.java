@@ -69,7 +69,14 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         int varSize, varPlayers, varTeams;
         do{
-            System.out.println("Welcome! How many players are you?");
+            /*
+                ENTER MAP TYPE HERE
+            */
+                
+            /*
+                ENTER NUMBER OF PLAYERS
+            */
+            System.out.println("How many players are you?");
             varPlayers = sc.nextInt();
             if((varPlayers>=2 && varPlayers<=4)){
                 do{
@@ -85,10 +92,14 @@ public class Game {
                 varSize = 50;
             }
         }while(varPlayers < 2 || varPlayers > 8);
+        
+        /*
+            ENTER NUMBER OF TEAMS
+        */
         do {
          System.out.println("Please enter number of teams: ");
          varTeams = sc.nextInt();
-        } while (varTeams>0);
+        } while (varTeams<0);
         setTeamNo(varTeams);
         setPlayers(varPlayers);
         setSize(varSize);
