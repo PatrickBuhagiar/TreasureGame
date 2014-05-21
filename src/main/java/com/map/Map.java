@@ -14,10 +14,9 @@ import java.util.Random;
  * @author Jake
  */
 public class Map extends iMap {
-    private tileType map [][];
     private final Random randomGenerator = new Random();
     public Map(){
-        map = new tileType [5][5];
+        super.map = new tileType [5][5];
     }
     
     public void generate(){
