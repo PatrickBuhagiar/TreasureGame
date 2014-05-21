@@ -6,6 +6,7 @@
 
 package com.player;
 
+import com.pest.suite.Game;
 import java.util.ArrayList;
 
 /**
@@ -15,10 +16,12 @@ import java.util.ArrayList;
 public class team {
     ArrayList<Player> players;
     int id;
+    private Game game;
     
-    public team(int ID){
+    public team(int ID, Game g){
         id = ID;
         players = new ArrayList<Player>();
+        game = g;
     }
     
     public void addPlayer(Player i){
@@ -31,4 +34,10 @@ public class team {
             System.out.println("player " + i.getID());
         }
     }
+    
+    public int teamSize(){
+        return players.size();
+    }
+    
+    
 }

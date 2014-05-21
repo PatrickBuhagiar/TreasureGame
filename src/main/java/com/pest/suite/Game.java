@@ -6,11 +6,13 @@
 package com.pest.suite;
 import com.map.Map;
 import com.player.Player;
+import com.player.team;
 import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 /**
  *
@@ -21,7 +23,8 @@ public class Game {
     private int teams;
     private int size;
     private Map currentMap;
-    private static  ArrayList<Player> playerList = new ArrayList();
+    private static  ArrayList<Player> playerList = new ArrayList<Player>();
+    private static ArrayList<team> teamList = new ArrayList<team>();
     private int currentPlayer;
     
     private static final Game singleton = new Game();
@@ -100,6 +103,10 @@ public class Game {
          System.out.println("Please enter number of teams: ");
          varTeams = sc.nextInt();
         } while (varTeams<0);
+        /*
+            SET CONDITIONS FOR TEAMS
+        */
+        
         setTeamNo(varTeams);
         setPlayers(varPlayers);
         setSize(varSize);
@@ -122,15 +129,17 @@ public class Game {
         currentMap.setMapSize(size, size); // Set the Map Size
         currentMap.generate(); // Generates the Map 
         System.out.println("Number of players: " + getPlayers());
+        System.out.println("Number of teams: " +  getTeamNo());
         System.out.println("Mapsize is: " + getSize() +"x"+getSize());
        
-        for(int i = 0; i< players; i++){
-            Player newPlayer = new Player(i,this);
-            playerList.add(newPlayer);
-            System.out.println("Player " + i +": " + newPlayer.getPos().getX() + "," + newPlayer.getPos().getY());
-            
-            //System.out.println("Player "+i+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
-        }
+        /*
+            CREATE TEAMS
+        */
+        
+        /*
+            SETS RANDOM POSITION
+        */
+        
         for(int i = 0; i< players; i++){
             System.out.println("Player "+playerList.get(i).getID()+" pos:" + playerList.get(i).getPos().getX() + ","+playerList.get(i).getPos().getY());
         }
@@ -196,5 +205,52 @@ public class Game {
     }
     public void setMap(Map m){
         this.currentMap = m;
+    }
+    
+    public void setTeams(int p, int t) throws FileNotFoundException{
+        if (p<=t){
+            t=p;
+            /*
+            set one player per team
+            */
+            for(int i = 0; i< teams; i++){
+                team newTeam = new team(i, this);
+                Player newPlayer = new Player(i,this);
+                newTeam.addPlayer(newPlayer);
+                playerList.add(newPlayer);
+                teamList.add(newTeam);
+            }
+        }
+        else {
+            for (int i = 0; i< teams; i++){
+                team newTeam = new team(i,this);
+                teamList.add(newTeam);
+            }
+            
+            for (int i = 0; i< players; i++){
+                Player newPlayer = new Player(i,this);
+                findteam(newPlayer);
+            }
+        }
+        
+    }
+
+    public void findteam(Player newPlayer) {
+        Random randomGenerator = new Random();
+        int r;
+        do{
+            r =  randomGenerator.nextInt(teams-1);
+        } while (!evenTeams(r));
+        teamList.get(r).addPlayer(newPlayer);
+    }
+
+    public boolean evenTeams(int r) {
+        for (int i = 0; i< teams; i++){
+            if ((teamList.get(i).teamSize() - teamList.get(r).teamSize()) > 1 
+                    || (teamList.get(i).teamSize() - teamList.get(r).teamSize()) < -1){
+                        return false;
+            }
+        }
+        return true;
     }
 }
