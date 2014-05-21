@@ -73,11 +73,11 @@ public class safeMapTest {
         System.out.println("generate");
         safeMap instance = new safeMap();
         int mapSize = (instance.getMap().length - 1)*(instance.getMap()[0].length - 1);
-        int maxBlue = (((10)*mapSize)/100);
+        int maxBlue = ((10*mapSize)/100);
         int blueCount = 0;
         instance.generate();
         tileType [][] a = instance.getMap();
-        boolean result = true;
+        System.out.println("Max Blue: " + maxBlue);
         for(int i = 0; i<= a.length - 1; i++){
             for(int j = 0; j<= a[0].length - 1; j++){
                 if(a[i][j] == tileType.SEA){
@@ -85,6 +85,7 @@ public class safeMapTest {
                 }
             }
         }
+        System.out.println("Blue Count: " + blueCount);
         assertTrue(blueCount <= maxBlue);
     }
 
