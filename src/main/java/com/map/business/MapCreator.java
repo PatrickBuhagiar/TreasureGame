@@ -33,7 +33,20 @@ public abstract class MapCreator {
     public tileType getTileType(int x, int y){
         return map[x][y];
     }
-        public void setTileType(int x, int y, tileType t){
+    public void setTileType(int x, int y, tileType t){
         map[x][y] = t;
+    }
+    public tileType[][] getView(boolean[][] shown){
+        tileType[][] view = new tileType[map.length-1][map.length-1];
+        for(int i = 0; i<= map.length - 1; i++){
+            for(int j = 0; j<= map[0].length - 1; j++){
+                if(shown [i][j] == true){
+                    view[i][j] = map[i][j];
+                } else {
+                    view[i][j] = tileType.UNKNOWN;
+                }
+            }
+        }
+        return view;
     }
 }
