@@ -31,7 +31,7 @@ public class Game {
     
      //Private constructor so as to prevent any other class from instantiating
     private Game(){
-        
+        currentMap = new Map();
         size = 0;
     }
     
@@ -68,7 +68,7 @@ public class Game {
         return size;
     }
     
-    private void playerInput(){
+    private void playerInput() throws FileNotFoundException{
         Scanner sc = new Scanner(System.in);
         int varSize, varPlayers, varTeams;
         do{
@@ -110,6 +110,11 @@ public class Game {
         setTeamNo(varTeams);
         setPlayers(varPlayers);
         setSize(varSize);
+        System.out.println("hey");
+        currentMap.setMapSize(size, size); // Set the Map Size
+        currentMap.generate(); // Generates the Map 
+        this.setMap(new Map());
+        setTeams();
     }
 /**
  * Contains the main working algortihms for class
@@ -125,9 +130,8 @@ public class Game {
      */
     public void GameMethod() throws FileNotFoundException {
         playerInput();
-        this.setMap(new Map()); // create Map Instace
-        currentMap.setMapSize(size, size); // Set the Map Size
-        currentMap.generate(); // Generates the Map 
+        
+         // create Map Instace
         System.out.println("Number of players: " + getPlayers());
         System.out.println("Number of teams: " +  getTeamNo());
         System.out.println("Mapsize is: " + getSize() +"x"+getSize());
@@ -208,9 +212,9 @@ public class Game {
         this.currentMap = m;
     }
     
-    public void setTeams(int p, int t) throws FileNotFoundException{
-        if (p<=t){
-            t=p;
+    public void setTeams() throws FileNotFoundException{
+        if (players<=teams){
+            teams=players;
             /*
             set one player per team
             */
@@ -223,14 +227,19 @@ public class Game {
             }
         }
         else {
+            System.out.println("entered condition 2");
             for (int i = 0; i< teams; i++){
                 team newTeam = new team(i,this);
+                
                 teamList.add(newTeam);
+                System.out.println("adding to " + i);
             }
             
             for (int i = 0; i< players; i++){
+                System.out.println("player");
                 Player newPlayer = new Player(i,this);
                 findteam(newPlayer);
+                System.out.println("added player " + i);
             }
         }
         
@@ -241,6 +250,7 @@ public class Game {
         int r;
         do{
             r =  randomGenerator.nextInt(teams-1);
+            System.out.println("1");
         } while (!evenTeams(r));
         teamList.get(r).addPlayer(newPlayer);
     }
@@ -251,6 +261,7 @@ public class Game {
                     || (teamList.get(i).teamSize() - teamList.get(r).teamSize()) < -1){
                         return false;
             }
+        System.out.println("loop");
         }
         return true;
     }
