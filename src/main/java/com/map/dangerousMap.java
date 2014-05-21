@@ -20,14 +20,14 @@ public class dangerousMap extends MapCreator implements iMap {
     }
     @Override
     public void generate(){
-        int add = randomGenerator.nextInt(10);
+        int add = randomGenerator.nextInt(11);
         int mapSize = (map.length - 1)*(map[0].length - 1);
         int maxBlue = (((25+add)*mapSize)/100);
         int blueCount = 0;
         for(int i = 0; i<= map.length - 1; i++){
             for (int j = 0; j<= map[0].length - 1; j++){
                 int b = randomGenerator.nextInt(100);
-                if(b%2 == 1 && blueCount <= maxBlue){  
+                if(b%2 == 1 && blueCount < maxBlue){  
                     map[i][j] = tileType.SEA; blueCount++; 
                 } 
                 else{
