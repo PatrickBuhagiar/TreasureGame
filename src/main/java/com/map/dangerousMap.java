@@ -20,7 +20,7 @@ public class dangerousMap extends MapCreator implements iMap {
     }
     @Override
     public void generate(){
-        int add = randomGenerator.nextInt(11);
+        int add = randomGenerator.nextInt(10);
         int mapSize = (map.length - 1)*(map[0].length - 1);
         int maxBlue = (((25+add)*mapSize)/100);
         int blueCount = 0;
