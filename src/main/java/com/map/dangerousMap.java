@@ -15,7 +15,7 @@ import com.map.business.tileType;
  */
 public class dangerousMap extends MapCreator implements iMap {
     public dangerousMap(){
-        super.mapName = "Safe Map";
+        super.mapName = "Dangerous Map";
         super.map = new tileType [5][5];
     }
     @Override
