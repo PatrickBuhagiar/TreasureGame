@@ -6,14 +6,27 @@
 
 package com.map.business;
 
+import java.util.Random;
+
 /**
  *
  * @author Jake
  */
-public interface iMap {
-    public boolean setMapSize(int x, int y);
-    public void generate();
-    public tileType getTileType(int x, int y);
-    public void setTileType(int x, int y, tileType t);
-    public tileType[][] getMap();
+public abstract class iMap {
+    private tileType map [][];
+    private final Random randomGenerator = new Random();
+    public boolean setMapSize(int x, int y){
+        this.map = new tileType [x][y];
+        return true;
+    }
+    
+    public tileType[][] getMap(){
+        return map;
+    }
+    public tileType getTileType(int x, int y){
+        return map[x][y];
+    }
+        public void setTileType(int x, int y, tileType t){
+        map[x][y] = t;
+    }
 }

@@ -13,23 +13,13 @@ import java.util.Random;
  *
  * @author Jake
  */
-public class Map implements iMap {
+public class Map extends iMap {
     private tileType map [][];
     private final Random randomGenerator = new Random();
     public Map(){
         map = new tileType [5][5];
     }
-    @Override
-    public boolean setMapSize(int x, int y){
-        this.map = new tileType [x][y];
-        return true;
-    }
     
-    public tileType[][] getMap(){
-        return map;
-    }
-    
-    @Override
     public void generate(){
         for(int i = 0; i<= map.length - 1; i++){
             for (int j = 0; j<= map[0].length - 1; j++){
@@ -63,15 +53,5 @@ public class Map implements iMap {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public tileType getTileType(int x, int y){
-        return map[x][y];
-    }
-    
-    @Override
-    public void setTileType(int x, int y, tileType t){
-        map[x][y] = t;
     }
 }
