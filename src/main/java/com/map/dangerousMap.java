@@ -5,17 +5,17 @@
  */
 
 package com.map;
+
 import com.map.business.MapCreator;
 import com.map.business.iMap;
 import com.map.business.tileType;
-
 /**
  *
  * @author Jake
  */
-public class Map extends MapCreator implements iMap {
-    public Map(){
-        super.mapName = "Random Map";
+public class dangerousMap extends MapCreator implements iMap {
+    public dangerousMap(){
+        super.mapName = "Safe Map";
         super.map = new tileType [5][5];
     }
     @Override
