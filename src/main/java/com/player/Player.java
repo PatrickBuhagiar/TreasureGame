@@ -71,6 +71,7 @@ public class Player {
         P.setPosition(X, Y);
         return P;
     }
+    
     public boolean movePlayer(char c) throws FileNotFoundException{
         int x = currentPosition.getX();
         int y = currentPosition.getY();
@@ -132,6 +133,7 @@ public class Player {
     public void setID(int i){
         this.id = i;
     }
+    
     private void uncoverTile(int x, int y) throws FileNotFoundException{
         if(!currentPosition.OutOfBounds(x,y, currentGame)){
             displayMap.setTileType(x, y, currentGame.getMap().getTileType(x, y));

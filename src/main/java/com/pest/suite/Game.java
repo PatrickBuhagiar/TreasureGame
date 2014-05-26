@@ -70,14 +70,14 @@ public class Game {
     
     private void playerInput() throws FileNotFoundException{
         Scanner sc = new Scanner(System.in);
-        int varSize, varPlayers, varTeams;
+        int varSize, varPlayers, varTeams=-1;
         do{
             /*
                 ENTER MAP TYPE HERE
             */
                 
             /*
-                ENTER NUMBER OF PLAYERS
+                ENTER NUMBER OF PLAYERS AND MAP SIZE
             */
             System.out.println("How many players are you?");
             varPlayers = sc.nextInt();
@@ -110,17 +110,14 @@ public class Game {
         setTeamNo(varTeams);
         setPlayers(varPlayers);
         setSize(varSize);
+        
+        
         System.out.println("hey");
         currentMap.setMapSize(size, size); // Set the Map Size
         currentMap.generate(); // Generates the Map 
-        this.setMap(new Map());
+        //this.setMap(new Map());
         setTeams();
     }
-/**
- * Contains the main working algortihms for class
- * including input verification of number of players
- * and map size.
- */
     
     /**
      * Contains the main working algortihms for class
@@ -208,6 +205,7 @@ public class Game {
     public Map getMap(){
         return currentMap;
     }
+    
     public void setMap(Map m){
         this.currentMap = m;
     }
