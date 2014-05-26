@@ -65,7 +65,7 @@ public class Player {
         do{            
             X = randomGenerator.nextInt(currentGame.getSize() - 1); 
             Y = randomGenerator.nextInt(currentGame.getSize() - 1);
-            System.out.println("pos");
+            //System.out.println("pos");
         }while(currentGame.getMap().getTileType(X, Y) != tileType.GRASS);
         Position P = new Position();
         P.setPosition(X, Y);

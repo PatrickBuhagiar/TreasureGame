@@ -112,7 +112,6 @@ public class Game {
         setSize(varSize);
         
         
-        System.out.println("hey");
         currentMap.setMapSize(size, size); // Set the Map Size
         currentMap.generate(); // Generates the Map 
         //this.setMap(new Map());
@@ -227,15 +226,16 @@ public class Game {
         else {
             System.out.println("entered condition 2");
             for (int i = 0; i< teams; i++){
-                team newTeam = new team(i,this);
-                
+                team newTeam = new team(i,this);  
                 teamList.add(newTeam);
-                System.out.println("adding to " + i);
+                //System.out.println("Team " + i + "Created");
             }
-            
+            System.out.println("Number of teams created: " + teamList.size());
             for (int i = 0; i< players; i++){
                 System.out.println("player");
-                Player newPlayer = new Player(i,this);
+                Player newPlayer;
+                newPlayer = new Player(i,this);
+                playerList.add(newPlayer);
                 findteam(newPlayer);
                 System.out.println("added player " + i);
             }
@@ -246,21 +246,24 @@ public class Game {
     public void findteam(Player newPlayer) {
         Random randomGenerator = new Random();
         int r;
+        int i = 0; // testing
         do{
-            r =  randomGenerator.nextInt(teams-1);
-            System.out.println("1");
+            r =  (int)(Math.random() * ((teams)));
+            System.out.println("Random team try" +i + ": " + r);
+            i++;
         } while (!evenTeams(r));
         teamList.get(r).addPlayer(newPlayer);
+        
     }
 
     public boolean evenTeams(int r) {
         for (int i = 0; i< teams; i++){
-            if ((teamList.get(i).teamSize() - teamList.get(r).teamSize()) > 1 
-                    || (teamList.get(i).teamSize() - teamList.get(r).teamSize()) < -1){
-                        return false;
+            if ((teamList.get(i).teamSize() - teamList.get(r).teamSize()) > -1 
+                    || (teamList.get(i).teamSize() - teamList.get(r).teamSize()) < 1){
+                        return true;
             }
-        System.out.println("loop");
+        System.out.println("loop " + i);
         }
-        return true;
+        return false;
     }
 }
