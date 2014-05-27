@@ -6,7 +6,8 @@
 
 package com.player;
 import com.pest.suite.Game;
-import com.map.Map;
+import com.map.MapConcreteCreator;
+import com.map.business.MapCreator;
 import java.io.FileNotFoundException;
 import com.map.business.tileType;
 import com.position.Position;
@@ -50,11 +51,8 @@ public class PlayerTest {
         System.out.println("ResetPosition");
         try{
             Game g = Game.getInstance();
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
-            g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
             Position ExpResult = instance.getStartPosition();
             instance.movePlayer('w');
@@ -74,11 +72,8 @@ public class PlayerTest {
         System.out.println("getPos");
         try{
             Game g = Game.getInstance();
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
-            g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
             Position ExpResult = new Position();
             ExpResult.setPosition(3, 3);
@@ -99,11 +94,8 @@ public class PlayerTest {
         System.out.println("movePlayer");
         try{
             Game g = Game.getInstance();
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
-            g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
             Position ExpResult = instance.getStartPosition();
             
@@ -143,11 +135,8 @@ public class PlayerTest {
         try{
             int expResult = 3;
             Game g = Game.getInstance();
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
-            g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
             instance.setID(expResult);
             int result = instance.getID();
@@ -166,12 +155,9 @@ public class PlayerTest {
         try{
         int expResult = 3;
         Game g = Game.getInstance();
-        Map m = new Map();
-        m.setMapSize(5, 5);
-        m.generate();
-        g.setMap(m);
-        g.setSize(5);
-        Player instance = new Player(2,g);
+        MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
+            Player instance = new Player(2,g);
         instance.setID(expResult);
         int result = instance.getID();
         assertEquals(expResult, result);
@@ -189,11 +175,9 @@ public class PlayerTest {
         try{
             Game g = Game.getInstance();
             g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
             m.getMap()[1][3] = tileType.GRASS;
             instance.getPos().setPosition(1, 3);
             assertEquals('C',instance.checkStatus());
@@ -220,11 +204,9 @@ public class PlayerTest {
         try{
             Game g = Game.getInstance();
             g.setSize(5);
+            MapConcreteCreator mcc = new MapConcreteCreator();
+            MapCreator m = mcc.setMap(1, 5);
             Player instance = new Player(2,g);
-            Map m = new Map();
-            m.setMapSize(5, 5);
-            m.generate();
-            g.setMap(m);
             instance.setStartPosition(2,2);
             Position expResult = new Position();
             expResult.setPosition(2, 2);

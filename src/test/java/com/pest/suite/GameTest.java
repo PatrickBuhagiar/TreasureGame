@@ -88,32 +88,5 @@ public class GameTest {
         int result = instance.getSize();
         assertEquals(expResult, result);
     }
-
-
-    
-    /**
-     * Test of getMap method, of class Game.
-     */
-    @Test
-    public void testGetMap() {
-        System.out.println("getMap");
-        Game instance = Game.getInstance();
-        Map expResult = new Map();
-        instance.setMap(expResult);
-        Map result = instance.getMap();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setMap method, of class Game.
-     */
-    @Test
-    public void testSetMap() {
-        System.out.println("setMap");
-        Map m = new Map();
-        Game instance = Game.getInstance();;
-        instance.setMap(m);
-        assertEquals(instance.getMap(), m);
-    }
     
 }
