@@ -155,9 +155,10 @@ public class PlayerTest {
         try{
         int expResult = 3;
         Game g = Game.getInstance();
+        g.setSize(5);
         MapConcreteCreator mcc = new MapConcreteCreator();
-            MapCreator m = mcc.setMap(1, 5);
-            Player instance = new Player(2,g);
+        MapCreator m = mcc.setMap(1, 5);
+        Player instance = new Player(2,g);
         instance.setID(expResult);
         int result = instance.getID();
         assertEquals(expResult, result);
