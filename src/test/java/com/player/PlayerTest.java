@@ -135,8 +135,7 @@ public class PlayerTest {
         try{
             int expResult = 3;
             Game g = Game.getInstance();
-            MapConcreteCreator mcc = new MapConcreteCreator();
-            MapCreator m = mcc.setMap(1, 5);
+            g.setSize(5);
             Player instance = new Player(2,g);
             instance.setID(expResult);
             int result = instance.getID();
