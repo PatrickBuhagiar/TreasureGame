@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package com.pest.suite;
-import com.map.Map;
+import com.map.MapConcreteCreator;
+import com.map.business.MapCreator;
 import com.player.Player;
 import com.player.team;
 import java.io.Console;
@@ -22,7 +23,7 @@ public class Game {
     private static int players;
     private int teams;
     private int size;
-    private Map currentMap;
+    private MapConcreteCreator currentMap;
     private static  ArrayList<Player> playerList = new ArrayList<Player>();
     private static ArrayList<team> teamList = new ArrayList<team>();
     private int currentPlayer;
@@ -31,7 +32,7 @@ public class Game {
     
      //Private constructor so as to prevent any other class from instantiating
     private Game(){
-        currentMap = new Map();
+        currentMap = new MapConcreteCreator();
         size = 0;
     }
     
@@ -73,10 +74,6 @@ public class Game {
         int varSize, varPlayers, varTeams=-1;
         do{
             /*
-                ENTER MAP TYPE HERE
-            */
-                
-            /*
                 ENTER NUMBER OF PLAYERS AND MAP SIZE
             */
             System.out.println("How many players are you?");
@@ -107,15 +104,23 @@ public class Game {
             SET CONDITIONS FOR TEAMS
         */
         
-        setTeamNo(varTeams);
-        setPlayers(varPlayers);
-        setSize(varSize);
+        /*
+                ENTER MAP TYPE HERE
+            */
+            int mapChoice = 0;
+            System.out.println("Please Select a map Type: ");
+            System.out.println("Enter 1 for a Regular Map");
+            System.out.println("Enter 2 for a Dangerous Map");
+            System.out.println("Enter 3 for a Safe Map");
+         do{
+                mapChoice = sc.nextInt();
+         }while(mapChoice != 1 && mapChoice != 2 && mapChoice != 3);
+         currentMap.setMap(mapChoice, varSize);
         
-        
-        currentMap.setMapSize(size, size); // Set the Map Size
-        currentMap.generate(); // Generates the Map 
-        //this.setMap(new Map());
-        setTeams();
+            setTeamNo(varTeams);
+            setPlayers(varPlayers);
+            setSize(varSize);
+            setTeams();
     }
     
     /**
@@ -201,14 +206,9 @@ public class Game {
         return c;
     }
     
-    public Map getMap(){
-        return currentMap;
+    public MapCreator getMap(){
+        return currentMap.getMap();
     }
-    
-    public void setMap(Map m){
-        this.currentMap = m;
-    }
-    
     public void setTeams() throws FileNotFoundException{
         if (players<=teams){
             teams=players;

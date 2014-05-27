@@ -38,6 +38,4 @@ public class team {
     public int teamSize(){
         return players.size();
     }
-    
-    
 }

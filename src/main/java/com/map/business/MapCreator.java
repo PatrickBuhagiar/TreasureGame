@@ -49,4 +49,10 @@ public abstract class MapCreator {
         }
         return view;
     }
+    public void generate(){
+        
+    }
+    public boolean setWinningTile(int n){
+        return false;
+    }
 }

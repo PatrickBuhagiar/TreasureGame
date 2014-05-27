@@ -7,13 +7,12 @@
 package com.map;
 
 import com.map.business.MapCreator;
-import com.map.business.iMap;
 import com.map.business.tileType;
 /**
  *
  * @author Jake
  */
-public class dangerousMap extends MapCreator implements iMap {
+public class dangerousMap extends MapCreator {
     public dangerousMap(){
         super.mapName = "Dangerous Map";
         super.map = new tileType [5][5];

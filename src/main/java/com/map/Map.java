@@ -6,14 +6,13 @@
 
 package com.map;
 import com.map.business.MapCreator;
-import com.map.business.iMap;
 import com.map.business.tileType;
 
 /**
  *
  * @author Jake
  */
-public class Map extends MapCreator implements iMap {
+public class Map extends MapCreator {
     public Map(){
         super.mapName = "Random Map";
         super.map = new tileType [5][5];

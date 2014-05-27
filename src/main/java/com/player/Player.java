@@ -5,7 +5,7 @@
  */
 
 package com.player;
-import com.map.Map;
+import com.map.business.MapCreator;
 import com.map.TableMapRender;
 import com.map.business.tileType;
 import com.pest.suite.Game;
@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class Player {
     private int id;
     private Position currentPosition;
-    private Map displayMap;
+    private MapCreator displayMap;
     private Game currentGame;
     private Position startPosition;
     private TableMapRender tmr;
@@ -35,8 +35,7 @@ public class Player {
         currentGame = game;
         startPosition = generateStart();
         currentPosition = startPosition;
-        displayMap = new Map();
-        displayMap.setMapSize(currentGame.getSize(), currentGame.getSize());
+        displayMap = game.getMap();
         displayMap.setUnknown();
         uncoverTile(startPosition.getX(),startPosition.getY());
     }
