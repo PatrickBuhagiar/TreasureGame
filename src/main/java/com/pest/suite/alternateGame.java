@@ -245,7 +245,7 @@ public class alternateGame {
         String code = tmr.generateCode();
         //System.out.println(code);
         try {
-            String file = "Player " + tempPlayerList.get(current_player_id).getId() + ".html";
+            String file = "map_player_" + tempPlayerList.get(current_player_id).getId() + ".html";
             PrintWriter writer = new PrintWriter(file, "UTF-8");
             writer.println(code);
             writer.close();
@@ -272,7 +272,7 @@ public class alternateGame {
         String code = tmr.generateCode();
         System.out.println(code);
         try {
-            String file = "Player " + player_input.getId() + ".html";
+            String file = "map_player_" + player_input.getId() + ".html";
             PrintWriter writer = new PrintWriter(file, "UTF-8");
             writer.println(code);
             writer.close();
@@ -347,7 +347,7 @@ public class alternateGame {
         }
     }
     
-     public boolean evenTeams(int r) {
+     private boolean evenTeams(int r) {
          float average = players/teams;
             if (teamList.get(r).getSize() > average){
                 return false;
