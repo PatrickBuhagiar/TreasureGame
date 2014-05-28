@@ -44,12 +44,22 @@ public class alternatePlayerTest {
     @Test
     public void testGetVisible() {
         System.out.println("getVisible");
-        alternatePlayer instance = new alternatePlayer(2,0);
+        alternatePlayer instance = new alternatePlayer(2,5);
         boolean[][] expResult = null;
-        boolean[][] result = instance.getVisible();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setVisible(expResult);
+        assertArrayEquals(expResult, instance.getVisible());
+    }
+    
+    /**
+     * Test of setVisible method, of class alternatePlayer.
+     */
+    @Test
+    public void testSetVisible() {
+        System.out.println("getSisible");
+        alternatePlayer instance = new alternatePlayer(2,5);
+        boolean[][] expResult = null;
+        instance.setVisible(expResult);
+        assertArrayEquals(expResult, instance.getVisible());
     }
 
     /**
@@ -95,7 +105,7 @@ public class alternatePlayerTest {
     public void testMove() {
         System.out.println("move");
         char c = ' ';
-        int s = 0;
+        int s = 5;
         alternatePlayer instance = new alternatePlayer(2,5);
         instance.setPos(3, 3);
         instance.move('w', s);
@@ -122,16 +132,16 @@ public class alternatePlayerTest {
         int j = 0;
         int s = 0;
         alternatePlayer instance = new alternatePlayer(2,5);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.OutOfBounds(4, 5, 5);
         assertEquals(expResult, result);
-        expResult = false;
+        expResult = true;
         result = instance.OutOfBounds(5, 4, 5);
         assertEquals(expResult, result);
-        expResult = false;
+        expResult = true;
         result = instance.OutOfBounds(-1, -1, 5);
         assertEquals(expResult, result);
-        expResult = true;
+        expResult = false;
         result = instance.OutOfBounds(3, 3, 5);
         assertEquals(expResult, result);
     }
