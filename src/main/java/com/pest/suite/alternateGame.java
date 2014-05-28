@@ -319,7 +319,7 @@ public class alternateGame {
             for(int i = 0; i < playerList.size(); i++){
                 do{
                     r = (int)(Math.random() * (teams));
-                } while (evenTeams(r));
+                } while (!evenTeams(r));
                 teamList.get(r).addPlayer(playerList.get(i));
             }
         } else {
@@ -330,13 +330,10 @@ public class alternateGame {
     }
     
      public boolean evenTeams(int r) {
-        for (int i = 0; i< teams; i++){
-            if (teamList.get(i).getSize() - teamList.get(r).getSize() >= 2 || teamList.get(i).getSize() - teamList.get(r).getSize() <= -2 ){
+         int average = players/teams;
+            if (teamList.get(r).getSize() >= average){
                         return false;
-            }
-            System.out.println("i " + i);
-        }
-        return true;
+            } else    return true;
     }
     
     /* Method to get the Smallest Sized Team */
