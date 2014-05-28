@@ -31,6 +31,10 @@ public class TableMapRender extends htmlPage {
         super.setHtmlStyle(htmlStyle);
         super.setBodyStyle(bodyStyle);
     }
+    public void setPlayerPoint(int x, int y){
+        this.playerpoint_x = x;
+        this.playerpoint_y = y;
+    }
     
       public String generateCode(){
        super.htmlTag.setCSSStyle("display: table; margin: auto;");
