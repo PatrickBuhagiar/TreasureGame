@@ -21,6 +21,8 @@ public class TableMapRender extends htmlPage {
     private tileType[][] map;
     private ArrayList<Tag> tags = new ArrayList<Tag>();
     private Position playerPoint = null;
+    private int playerpoint_x = -1;
+    private int playerpoint_y = -1;
     public TableMapRender(tileType [][] mapArray, String htmlStyle, String bodyStyle){
         this.map = mapArray;
     }
@@ -28,6 +30,10 @@ public class TableMapRender extends htmlPage {
     public TableMapRender(String htmlStyle, String bodyStyle){
         super.setHtmlStyle(htmlStyle);
         super.setBodyStyle(bodyStyle);
+    }
+    public void setPlayerPoint(int x, int y){
+        this.playerpoint_x = x;
+        this.playerpoint_y = y;
     }
     public void setPlayerPoint(Position p){
         this.playerPoint = p;
@@ -41,6 +47,14 @@ public class TableMapRender extends htmlPage {
        String o = "";
        Tag tableTag = new Table();
        o = o + htmlTag.getOpenTag();
+       o = o + "<head><script type=\"text/JavaScript\">" +
+            "<!--" +
+            "function timedRefresh(timeoutPeriod) {" +
+            "        setTimeout(\"location.reload(true);\",timeoutPeriod);" +
+            "}" +
+            "//   -->" +
+            "</script>" +
+            "</head>";
        o = o + bodyTag.getOpenTag();
        Tag trTag = new Tr();
        Tag tdTag = new Td();
@@ -65,11 +79,16 @@ public class TableMapRender extends htmlPage {
                        break;
                }
                o = o + tdTag.getOpenTag();
-               if(playerPoint != null){
-                   if(i == playerPoint.getX() && j == playerPoint.getY()){
+               if(playerpoint_x != -1 && playerpoint_y != -1){
+                   if(i == playerpoint_x && j == playerpoint_y){
                        o = o + "&#167;"; // Show Player Icon
                    }
                }
+               /*if(playerPoint != null){
+                   if(i == playerPoint.getX() && j == playerPoint.getY()){
+                       o = o + "&#167;"; // Show Player Icon
+                   }
+               }*/
                o = o + tdTag.getCloseTag();
            }
            o = o + trTag.getCloseTag();

@@ -14,4 +14,14 @@ public class Body extends Tag  {
     public Body(){
         super.tagName = "body";
     }
+    @Override
+    public String getOpenTag(){
+        String output = "";
+        output += "<" + tagName;
+        if(cssStyle != null){
+            output += "onload=\"JavaScript:timedRefresh(5000);\" style=\"" + cssStyle + "\"";
+        }
+        output += ">";
+        return output;
+    }
 }

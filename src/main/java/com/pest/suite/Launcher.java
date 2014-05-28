@@ -13,7 +13,9 @@ import java.io.IOException;
  */
 public class Launcher {
     public static void main(String[]args) throws FileNotFoundException{
-        Game g = Game.getInstance();
-            g.GameMethod();
+        alternateGame g = new alternateGame();
+        g.launchGame();
+        //Game g = Game.getInstance();
+        //    g.GameMethod();
     }
 }
