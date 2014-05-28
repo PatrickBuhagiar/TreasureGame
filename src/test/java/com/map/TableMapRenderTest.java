@@ -37,7 +37,37 @@ public class TableMapRenderTest {
     @After
     public void tearDown() {
     }
-
+    
+    /**
+     * Test of generateCode method, of class TableMapRender.
+     */
+    @Test
+    public void testSetPlayerPoints() {
+        System.out.println("setPlayerPoints");
+        Map p = new Map();
+        p.setUnknown();
+        TableMapRender instance = new TableMapRender(p.getMap(),"","");
+        instance.setPlayerPoint(2, 2);
+        int [] playerPoints = instance.getPlayerPoints();
+        assertEquals(playerPoints[0],2);
+        assertEquals(playerPoints[1],2);
+    }
+    
+    /**
+     * Test of generateCode method, of class TableMapRender.
+     */
+    @Test
+    public void testGetPlayerPoints() {
+        System.out.println("getPlayerPoints");
+        Map p = new Map();
+        p.setUnknown();
+        TableMapRender instance = new TableMapRender(p.getMap(),"","");
+        instance.setPlayerPoint(2, 2);
+        int [] playerPoints = instance.getPlayerPoints();
+        assertEquals(playerPoints[0],2);
+        assertEquals(playerPoints[1],2);
+    }
+    
     /**
      * Test of generateCode method, of class TableMapRender.
      */
