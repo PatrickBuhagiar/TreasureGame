@@ -40,7 +40,7 @@ public class alternatePlayer {
         makeVisible();
     }
     /* Make a Tile Visible */
-    private void makeVisible(){
+    public void makeVisible(){
         visible[x][y] = true;
     }
     /* Moves the Player and checks if he is out of bounds.
