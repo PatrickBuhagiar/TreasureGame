@@ -31,6 +31,9 @@ public class alternatePlayer {
     public int getId(){
         return Id;
     }
+    public void setId(int n){
+        this.Id = n;
+    }
     public void goToStart(){
         x = start_x;
         y = start_y;
