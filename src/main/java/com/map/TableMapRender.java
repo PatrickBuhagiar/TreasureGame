@@ -36,6 +36,12 @@ public class TableMapRender extends htmlPage {
         this.playerpoint_y = y;
     }
     
+    public int[] getPlayerPoints(){
+        int[] o = new int[2];
+        o[0] = playerpoint_x;
+        o[1] = playerpoint_y;
+        return o;
+    }
       public String generateCode(){
        super.htmlTag.setCSSStyle("display: table; margin: auto;");
        super.bodyTag.setCSSStyle("display: table-cell; vertical-align: middle;");
