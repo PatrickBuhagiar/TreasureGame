@@ -28,6 +28,9 @@ public class alternatePlayer {
     public boolean[][] getVisible(){
         return visible;
     }
+    public void setVisible(boolean [][] v){
+        this.visible = v;
+    }
     public int getId(){
         return Id;
     }
