@@ -19,9 +19,14 @@ public class alternateTeam {
     public ArrayList<alternatePlayer> getPlayerList(){
         return players;
     }
-    
+    public void setPlayerList(ArrayList<alternatePlayer> p){
+        this.players = p;
+    }
     public int getId(){
         return id;
+    }
+    public void setId(int x){
+        this.id = x;
     }
     public int getSize(){
         return players.size();
