@@ -68,6 +68,7 @@ public class alternateGame {
                     tempAltPlayer.setPos(some_x, some_y);
                     if(checkMove(tempAltPlayer) == 0){
                         teamList.get(i).getPlayerList().get(j).setStartPos(some_x, some_y);
+                        System.out.println("Player " + j + " has starting position " + some_x + "," + some_y);
                     }
                 }while(checkMove(teamList.get(i).getPlayerList().get(j)) != 0);
                 doDisplay(teamList.get(i),j);
@@ -87,7 +88,7 @@ public class alternateGame {
                         System.out.println("> Please Enter a Move (W/S/A/D): ");
                         playerMove = sc.next().charAt(0);
                     }while(!(teamList.get(i).getPlayerList().get(j).move(playerMove, gameMap.getMap().getMap().length)));
-                    switch(checkMove(teamList.get(i).getPlayerList().get(i))){
+                    switch(checkMove(teamList.get(i).getPlayerList().get(j))){
                         case 0:
                             System.out.println(">> You've Found some Grass! You Live!");
                             doDisplay(teamList.get(i),j);
@@ -142,6 +143,7 @@ public class alternateGame {
                     tempAltPlayer.setPos(some_x, some_y);
                     if(checkMove(tempAltPlayer) == 0){
                         playerList.get(i).setStartPos(some_x, some_y);
+                        System.out.println("Player " + i + " has starting position " + some_x + "," + some_y);
                     }
                 }while(checkMove(playerList.get(i)) != 0);
         }
@@ -211,7 +213,14 @@ public class alternateGame {
                 }
             }
         }
-        System.out.println("T");
+        int counter = 0;
+        for (int i = 0; i <= input.length -1; i++){
+            for(int k = 0; k<= input[i].length - 1; k++){
+                if (input[i][k] == true) counter++;
+            }
+        }
+        
+        System.out.println(counter);
         MapConcreteCreator temp = new MapConcreteCreator();
         temp.setMap(1, gameMap.getMap().getMap().length);
         temp.getMap().setUnknown();
@@ -223,9 +232,10 @@ public class alternateGame {
             }
         }
         tmr = new TableMapRender(temp.getMap().getMap(),"","");
-        tmr.setPlayerPoint(tempPlayerList.get(current_player_id).getX(),tempPlayerList.get(current_player_id).getX());
+        System.out.println(" Player point: " +tempPlayerList.get(current_player_id).getX() +"," + tempPlayerList.get(current_player_id).getY());
+        tmr.setPlayerPoint(tempPlayerList.get(current_player_id).getX(),tempPlayerList.get(current_player_id).getY());
         String code = tmr.generateCode();
-        System.out.println(code);
+        //System.out.println(code);
         try {
             String file = "Player " + tempPlayerList.get(current_player_id).getId() + ".html";
             PrintWriter writer = new PrintWriter(file, "UTF-8");
