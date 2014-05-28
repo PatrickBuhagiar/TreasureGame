@@ -40,9 +40,17 @@ public class alternateGame {
     // Scanner Class for Input
     Scanner sc = new Scanner(System.in);
     TableMapRender tmr;
-    public alternateGame(){
+    
+    private static final alternateGame singleton = new alternateGame();
+    
+    private alternateGame(){
         
     }
+    
+    public static alternateGame getInstance(){
+        return singleton;
+    }
+    
     /* Launches The Game Call this from Constructor */
     public void launchGame() throws FileNotFoundException {
         launchInput();
