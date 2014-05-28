@@ -10,7 +10,7 @@ import com.map.business.tileType;
 import com.map.htmlGenerator.*;
 import com.map.htmlGenerator.business.Tag;
 import java.util.ArrayList;
-import com.position.Position;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class TableMapRender extends htmlPage {
       private int width, height;
     private tileType[][] map;
     private ArrayList<Tag> tags = new ArrayList<Tag>();
-    private Position playerPoint = null;
+   // private Position playerPoint = null;
     private int playerpoint_x = -1;
     private int playerpoint_y = -1;
     public TableMapRender(tileType [][] mapArray, String htmlStyle, String bodyStyle){
@@ -35,12 +35,7 @@ public class TableMapRender extends htmlPage {
         this.playerpoint_x = x;
         this.playerpoint_y = y;
     }
-    public void setPlayerPoint(Position p){
-        this.playerPoint = p;
-    }
-    public Position getPlayerPoint(){
-        return playerPoint;
-    }
+    
       public String generateCode(){
        super.htmlTag.setCSSStyle("display: table; margin: auto;");
        super.bodyTag.setCSSStyle("display: table-cell; vertical-align: middle;");
