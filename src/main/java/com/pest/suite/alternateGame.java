@@ -59,12 +59,12 @@ public class alternateGame {
         
         // Set Random positions for all players
         
-        for(int i = 0; i<= teamList.size() - 1; i++){
-            for(int j = 0; j<= teamList.get(i).getPlayerList().size() - 1; j++){
+        for(int i = 0; i< teamList.size(); i++){
+            for(int j = 0; j< teamList.get(i).getPlayerList().size(); j++){
                 do{
                     int some_x = teamList.get(i).getPlayerList().get(j).getRandomPos(gameMap.getMap().getMap().length);
                     int some_y = teamList.get(i).getPlayerList().get(j).getRandomPos(gameMap.getMap().getMap().length);
-                    alternatePlayer tempAltPlayer = new alternatePlayer(99,5);
+                    alternatePlayer tempAltPlayer = new alternatePlayer(99,gameMap.getMap().getMap().length);
                     tempAltPlayer.setPos(some_x, some_y);
                     if(checkMove(tempAltPlayer) == 0){
                         teamList.get(i).getPlayerList().get(j).setStartPos(some_x, some_y);
@@ -330,10 +330,11 @@ public class alternateGame {
     }
     
      public boolean evenTeams(int r) {
-         int average = players/teams;
-            if (teamList.get(r).getSize() >= average){
-                        return false;
-            } else    return true;
+         float average = players/teams;
+            if (teamList.get(r).getSize() > average){
+                return false;
+            } else
+                return true;
     }
     
     /* Method to get the Smallest Sized Team */
