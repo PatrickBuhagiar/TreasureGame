@@ -10,8 +10,6 @@ import com.map.MapConcreteCreator;
 import com.map.TableMapRender;
 import com.map.business.MapCreator;
 import com.map.business.tileType;
-import com.player.Player;
-import com.player.team;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -234,7 +232,7 @@ public class alternateGame {
             writer.println(code);
             writer.close();
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(alternatePlayer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -261,7 +259,7 @@ public class alternateGame {
             writer.println(code);
             writer.close();
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(alternatePlayer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -281,23 +279,23 @@ public class alternateGame {
         int choice = 0;
         System.out.println("********** WELCOME TO THE GAME ***********");
         System.out.println("Enter 1 for Team Mode, Enter 2 for Player Mode");
-        System.out.println("Please Choose a Team Mode:");
+        System.out.println("Please Choose a Game Mode:");
         do{
             choice = sc.nextInt();
-        }while(choice != 2 && choice != 1);
+        }while(choice!=2 && choice!=1);
         setMode(choice);
         switch(choice){
             case 2:
-                System.out.println("Please enter the number of players (Must be Maximum 1, Minimum 8):");
+                System.out.println("Please enter the number of players (Must be Minimum of 2, Maximum 8):");
                 do{
                     players = sc.nextInt();
-                }while(players <= 1 && players >= 8);
+                }while(players < 2 || players > 8);
                 break;
             case 1:
                 do{
-                    System.out.println("Please enter the number of players (Must be At least  2):");
+                    System.out.println("Please enter the number of players (Must be Minimum of 2, Maximum 8):");
                     players = sc.nextInt();
-                }while(players < 2);
+                }while(players < 2 || players > 8);
                 do{
                     System.out.println("Please enter the number of teams (Must be At least 2):");
                     teams = sc.nextInt();
@@ -310,22 +308,35 @@ public class alternateGame {
     
     /* Allocates Players to Team, Calls SmallestSize and TeamConstraint */
     private void allocatePlayers(){
+        int r;
         if(teamMode){
             for(int i = 0; i<= teams - 1; i++){
                 teamList.add(new alternateTeam(i));
             }
             for(int i = 0; i<= players - 1; i++){
                 playerList.add(new alternatePlayer(i,gameMap.getMap().getMap().length));
-            }
-            for(int i = 0; i<= playerList.size() - 1; i++){
-                int smallestId = getSmallestSize(teamList);
-                teamList.get(smallestId).addPlayer(playerList.get(i));
+            }   
+            for(int i = 0; i < playerList.size(); i++){
+                do{
+                    r = (int)(Math.random() * (teams));
+                } while (evenTeams(r));
+                teamList.get(r).addPlayer(playerList.get(i));
             }
         } else {
             for(int i = 0; i<= players - 1; i++){
                 playerList.add(new alternatePlayer(i,gameMap.getMap().getMap().length));
             }
         }
+    }
+    
+     public boolean evenTeams(int r) {
+        for (int i = 0; i< teams; i++){
+            if (teamList.get(i).getSize() - teamList.get(r).getSize() >= 2 || teamList.get(i).getSize() - teamList.get(r).getSize() <= -2 ){
+                        return false;
+            }
+            System.out.println("i " + i);
+        }
+        return true;
     }
     
     /* Method to get the Smallest Sized Team */
@@ -370,20 +381,20 @@ public class alternateGame {
     /* Input Methods for setting Map, Calls Map Config */
     private void mapSelect(){
         System.out.println("Please Enter the type of Map: ");
-        int mapChoice, mapSize, maxMapSize;
-        if(players >= 2 && players <= 4){
-            maxMapSize = 5;
+        int mapChoice, mapSize, minMapSize;
+        if(players > 1 && players < 5){
+            minMapSize = 5;
         } else {
-            maxMapSize = 8;
+            minMapSize = 8;
         }
         do{
-            System.out.println("Select 1 for Random Map, Select 2 for Dangerous Map, Select 3 for Safe Map");
+            System.out.println("Select 1 for Random Map, Select 2 for Dangerous Map, Select 3 for Safe Map:");
             mapChoice = sc.nextInt();
         }while(mapChoice != 1 && mapChoice != 2 && mapChoice != 3);
         do{
-           System.out.println("Please Select a Map Size:");
+           System.out.println("Please Select a Map Size ("+ minMapSize + " - 50):");
            mapSize = sc.nextInt();
-        }while(mapSize <= maxMapSize && mapSize > 5);
+        }while(mapSize < minMapSize && mapSize > 50);
         configMap(mapChoice,mapSize);
     }
     
